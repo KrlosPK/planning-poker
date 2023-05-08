@@ -1,11 +1,20 @@
 .loading--page {
   align-items: center;
   display: flex;
+  justify-content: center;
+  margin: auto;
+  min-height: 100vh;
+  width: fit-content;
+}
+.loading--page__image {
+  animation: loading 1150ms ease-in-out infinite alternate-reverse;
+}
+.loading--page__flex {
+  align-items: center;
+  display: flex;
   flex-direction: column;
   gap: 1rem;
   justify-content: center;
-  min-height: 100vh;
-  animation: loading 1150ms ease infinite alternate-reverse;
 }
 
 @keyframes loading {
