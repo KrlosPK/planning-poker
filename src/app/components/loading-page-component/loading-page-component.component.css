@@ -1,0 +1,18 @@
+.loading--page {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  min-height: 100vh;
+  animation: loading 1150ms ease infinite alternate-reverse;
+}
+
+@keyframes loading {
+  from {
+    scale: 1;
+  }
+  to {
+    scale: 1.075;
+  }
+}
