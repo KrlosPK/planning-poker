@@ -1,13 +1,15 @@
 * {
   box-sizing: border-box;
+  color: #ffffff;
   margin: 0;
+  padding: 0;
 }
 
 body {
   background: radial-gradient(
       50% 50% at 50% 50%,
       #330072 0%,
-      rgba(31, 13, 63, 0.7) 100%
+      rgba(31, 13, 63) 100%
     )
     no-repeat center center fixed;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
