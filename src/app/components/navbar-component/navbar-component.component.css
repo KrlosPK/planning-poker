@@ -3,11 +3,9 @@
   background-color: rgb(24, 7, 53);
   display: flex;
   gap: 1rem;
-  padding: 1rem;
   justify-content: space-between;
   list-style: none;
-  min-height: 2.5rem;
-  position: fixed;
-  top: 0;
+  min-height: 3rem;
+  padding: 1rem;
   width: 100%;
 }

@@ -19,9 +19,9 @@
 
 @keyframes loading {
   from {
-    scale: 1;
+    opacity: 1;
   }
   to {
-    scale: 1.075;
+    opacity: 0.075;
   }
 }
