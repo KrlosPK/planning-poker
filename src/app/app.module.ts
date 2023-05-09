@@ -8,6 +8,7 @@ import { GamePageComponent } from './pages/game-page/game-page.component';
 import { LoadingPageComponent } from './pages/loading-page/loading-page.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { NavbarComponentComponent } from './components/navbar-component/navbar-component.component';
+import { CardsComponentComponent } from './components/cards-component/cards-component.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NavbarComponentComponent } from './components/navbar-component/navbar-c
     GamePageComponent,
     LoadingPageComponent,
     NotFoundPageComponent,
-    NavbarComponentComponent
+    NavbarComponentComponent,
+    CardsComponentComponent
   ],
   imports: [
     BrowserModule,

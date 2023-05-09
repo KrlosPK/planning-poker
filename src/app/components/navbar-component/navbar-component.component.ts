@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar-component.component.css']
 })
 export class NavbarComponentComponent {
-
+  ngOnInit():void {
+    console.log("object");
+  }
 }
