@@ -9,6 +9,7 @@ import { LoadingPageComponent } from './pages/loading-page/loading-page.componen
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { NavbarComponentComponent } from './components/navbar-component/navbar-component.component';
 import { CardsComponentComponent } from './components/cards-component/cards-component.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CardsComponentComponent } from './components/cards-component/cards-comp
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -38,6 +38,7 @@ a {
 }
 .button {
   background-color: #f6f7fc;
+  border: none;
   border-radius: 50px;
   color: #000000;
   cursor: pointer;
