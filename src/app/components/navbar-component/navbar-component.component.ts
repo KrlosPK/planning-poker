@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AppState } from 'src/app/interfaces/game.interface';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-navbar-component',
@@ -7,4 +9,11 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponentComponent {
   gameName: string = '';
+
+  constructor(private store: Store<AppState>) {}
+
+  ngOnInit() {
+    this.store.select('gameName')
+      .subscribe(gameName => this.gameName = gameName)
+  }
 }

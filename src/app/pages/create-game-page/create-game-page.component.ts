@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Store, Action } from '@ngrx/store';
+import { Store, Action, createAction } from '@ngrx/store';
 import { Router } from '@angular/router';
-
-interface AppState {
-  counter: string;
-}
+import { changeGameNameAction } from 'src/app/actions/game.actions';
+import { AppState } from 'src/app/interfaces/game.interface';
 
 @Component({
   selector: 'app-create-game-page',
@@ -14,20 +12,18 @@ interface AppState {
 })
 export class CreateGamePageComponent {
   form!: FormGroup;
-  gameName: string;
+  gameName!: string;
 
   constructor(
     private fb: FormBuilder,
-    private router: Router,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private router: Router
   ) {
-    this.gameName = '';
     this.createForm();
-    this.store.subscribe((state) => {
-      console.log(this.gameName);
-      this.gameName = state.counter;
-      console.log(state.counter);
-    });
+
+    this.store
+      .select('gameName')
+      .subscribe((gameName) => (this.gameName = gameName));
   }
 
   get invalidGameName() {
@@ -55,14 +51,13 @@ export class CreateGamePageComponent {
         control.markAsTouched();
       });
     }
-    this.changeGameName()
+    this.dispatch()
+
     return this.router.navigate(['/game']);
   }
 
-  changeGameName() {
-    const action: Action = {
-      type: 'INCREMENT'
-    };
+  dispatch() {
+    const action = new changeGameNameAction(this.gameName);
     this.store.dispatch(action);
   }
 }
