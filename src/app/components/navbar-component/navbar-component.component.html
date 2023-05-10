@@ -1,11 +1,9 @@
 <header>
   <nav>
     <ul class="navbar">
-      <li>
-        <a routerLink="/create-game" class="logo"
-          ><img src="./assets/ficha-de-poker 1.png" alt="logo planning poker" />
-          <h2>Crear partida</h2></a
-        >
+      <li class="logo">
+        <img src="./assets/ficha-de-poker 1.png" alt="logo planning poker" />
+        <h2>Crear partida</h2>
       </li>
       <li *ngIf="gameName">
         <h3 class="game-name">{{ gameName }}</h3>

@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { StoreModule } from '@ngrx/store'
+import { StoreModule } from '@ngrx/store';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,7 +11,8 @@ import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.com
 import { NavbarComponentComponent } from './components/navbar-component/navbar-component.component';
 import { CardsComponentComponent } from './components/cards-component/cards-component.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { gameReducer } from './game.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { gameReducer } from './reducers/game.reducer';
 
 @NgModule({
   declarations: [
@@ -21,15 +22,17 @@ import { gameReducer } from './game.reducer';
     LoadingPageComponent,
     NotFoundPageComponent,
     NavbarComponentComponent,
-    CardsComponentComponent
+    CardsComponentComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    StoreModule.forRoot(),
+    StoreModule.forRoot({}, {}),
+    StoreModule.forFeature('gameName', gameReducer),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
