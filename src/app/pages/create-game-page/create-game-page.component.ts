@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store, Action } from '@ngrx/store';
 import { Router } from '@angular/router';
+
+interface AppState {
+  counter: string;
+}
 
 @Component({
   selector: 'app-create-game-page',
@@ -9,8 +14,20 @@ import { Router } from '@angular/router';
 })
 export class CreateGamePageComponent {
   form!: FormGroup;
-  constructor(private fb: FormBuilder, private router: Router) {
+  gameName: string;
+
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private store: Store<AppState>
+  ) {
+    this.gameName = '';
     this.createForm();
+    this.store.subscribe((state) => {
+      console.log(this.gameName);
+      this.gameName = state.counter;
+      console.log(state.counter);
+    });
   }
 
   get invalidGameName() {
@@ -38,7 +55,14 @@ export class CreateGamePageComponent {
         control.markAsTouched();
       });
     }
-
+    this.changeGameName()
     return this.router.navigate(['/game']);
+  }
+
+  changeGameName() {
+    const action: Action = {
+      type: 'INCREMENT'
+    };
+    this.store.dispatch(action);
   }
 }

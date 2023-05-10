@@ -16,7 +16,12 @@
         >Debe tener entre 5 y 20 caracteres</small
       >
     </div>
-    <button [disabled]="invalidGameName" (click)="createGame()" class="button">
+    <button
+      [disabled]="invalidGameName"
+      type="button"
+      (click)="createGame()"
+      class="button"
+    >
       Crear partida
     </button>
   </form>

@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar-component.component.css'],
 })
 export class NavbarComponentComponent {
-  gameName: string = 'Sprint 32';
+  gameName: string = '';
 }
