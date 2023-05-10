@@ -1,10 +1,20 @@
 .loading--page {
   align-items: center;
+  background: radial-gradient(
+      50% 50% at 50% 50%,
+      #330072 0%,
+      rgba(31, 13, 63) 100%
+    )
+    no-repeat center center fixed;
   display: flex;
+  height: 100vh;
+  inset: 0;
   justify-content: center;
   margin: auto;
   min-height: 100vh;
+  position: absolute;
   width: fit-content;
+  width: 100%;
 }
 .loading--page__image {
   animation: loading 1150ms ease-in-out infinite alternate-reverse;
@@ -19,9 +29,9 @@
 
 @keyframes loading {
   from {
-    scale: 1;
+    opacity: 1;
   }
   to {
-    scale: 1.075;
+    opacity: 0.075;
   }
 }
