@@ -1,3 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+:root {
+  --title-size: 1.3rem;
+  --bg-color: #330072;
+  --secoundary-color: rgba(31, 13, 63);
+  --hover-color: rgb(162, 120, 233);
+}
+
 * {
   box-sizing: border-box;
   color: #ffffff;
@@ -8,13 +17,11 @@
 body {
   background: radial-gradient(
       50% 50% at 50% 50%,
-      #330072 0%,
-      rgba(31, 13, 63) 100%
+      var(--bg-color) 0%,
+      var(--secoundary-color) 100%
     )
     no-repeat center center fixed;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Poppins", sans-serif;
   overflow: hidden;
 }
 .main {
@@ -24,4 +31,7 @@ body {
   gap: 1rem;
   justify-content: center;
   min-height: 100vh;
+}
+a {
+  text-decoration: none;
 }

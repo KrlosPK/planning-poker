@@ -5,4 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './navbar-component.component.html',
   styleUrls: ['./navbar-component.component.css'],
 })
-export class NavbarComponentComponent {}
+export class NavbarComponentComponent {
+  gameName: string = 'Sprint 32';
+}

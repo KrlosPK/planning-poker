@@ -2,13 +2,22 @@
   <nav>
     <ul class="navbar">
       <li>
-        <a routerLink="/create-game">Crear Juego</a>
+        <a routerLink="/create-game" class="logo"
+          ><img src="./assets/ficha-de-poker 1.png" alt="logo planning poker" />
+          <h2>Crear partida</h2></a
+        >
       </li>
       <li>
-        <a routerLink="/game">Juego</a>
+        <h3 class="game-name">{{ gameName }}</h3>
       </li>
-      <li>
-        <a routerLink="/loading-page">Loading</a>
+      <li class="invite--section">
+        <img
+          src="./assets/Logo.png"
+          width="36"
+          height="36"
+          alt="imagen de perfil de Google"
+        />
+        <button class="invite--button">Invitar jugadores</button>
       </li>
     </ul>
   </nav>
