@@ -1,12 +1,11 @@
 .navbar {
   align-items: center;
-  background-color: var(--secoundary-color);
   display: flex;
   gap: 1rem;
   justify-content: space-between;
   list-style: none;
   min-height: 3rem;
-  padding: 1rem;
+  padding: 2rem 6rem;
   width: 100%;
 }
 .navbar a {
@@ -48,6 +47,7 @@
   border: 1px solid #ffffff;
   border-radius: 50px;
   cursor: pointer;
+  font-size: 14px;
   padding: 6px 1rem;
   transition: border-color 300ms ease-in-out, color 300ms ease-in-out;
 }

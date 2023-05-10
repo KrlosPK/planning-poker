@@ -1,0 +1,41 @@
+.create--game {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  translate: -50% -50%;
+}
+.create--game__form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+  justify-content: center;
+}
+.create--game__input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.create--game__input label {
+  font-size: 14px;
+  font-weight: 700;
+}
+.create--game__input input {
+  background: linear-gradient(
+    0deg,
+    rgba(100, 41, 205, 0.08),
+    rgba(100, 41, 205, 0.08)
+  );
+  border: 1px solid #bb65ff;
+  border-radius: 100px;
+  padding: 8px;
+  padding-left: 1rem;
+  transition: border-color 300ms ease-in-out;
+  width: 300px;
+}
+.create--game__input input:hover {
+  border: 1px solid #fa65ff;
+}
+.create--game__input input:focus {
+  outline: none;
+}

@@ -10,6 +10,8 @@
 * {
   box-sizing: border-box;
   color: #ffffff;
+  font-family: "Poppins", sans-serif;
+  line-height: 1;
   margin: 0;
   padding: 0;
 }
@@ -21,7 +23,6 @@ body {
       var(--secoundary-color) 100%
     )
     no-repeat center center fixed;
-  font-family: "Poppins", sans-serif;
   overflow: hidden;
 }
 .main {
@@ -34,4 +35,19 @@ body {
 }
 a {
   text-decoration: none;
+}
+.button {
+  background-color: #f6f7fc;
+  border-radius: 50px;
+  color: #000000;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 12px 24px;
+}
+.button:disabled {
+  background: #9d9da14d;
+  color: #9d9da1;
+  cursor: not-allowed;
+  pointer-events: none;
 }
