@@ -55,3 +55,10 @@
   border-color: var(--hover-color);
   color: var(--hover-color);
 }
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 4px;
+    flex-wrap: wrap;
+  }
+}

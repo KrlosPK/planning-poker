@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { StoreModule } from '@ngrx/store'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +10,8 @@ import { LoadingPageComponent } from './pages/loading-page/loading-page.componen
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { NavbarComponentComponent } from './components/navbar-component/navbar-component.component';
 import { CardsComponentComponent } from './components/cards-component/cards-component.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { gameReducer } from './game.reducer';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,9 @@ import { CardsComponentComponent } from './components/cards-component/cards-comp
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    StoreModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
