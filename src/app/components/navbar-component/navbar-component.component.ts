@@ -1,20 +1,24 @@
-import { Component } from '@angular/core';
-import { AppState } from 'src/app/interfaces/game.interface';
-import { Store } from '@ngrx/store';
+import { Component, OnInit } from '@angular/core';
+import { GameService } from 'src/app/services/game.service';
 
 @Component({
   selector: 'app-navbar-component',
   templateUrl: './navbar-component.component.html',
   styleUrls: ['./navbar-component.component.css'],
 })
-export class NavbarComponentComponent {
+export class NavbarComponentComponent implements OnInit {
   gameName: string = '';
+  isCreateGame: boolean = true;
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private gameService: GameService) {}
 
-  ngOnInit() {
-    this.store
-      .select('gameName')
-      .subscribe((gameName) => (this.gameName = gameName));
+  ngOnInit(): void {
+    this.gameService
+      .getGameName$()
+      .subscribe(({ gameName }) => (this.gameName = gameName));
+
+    this.gameService
+      .getCreateGame$()
+      .subscribe(({ isCreateGame }) => (this.isCreateGame = isCreateGame));
   }
 }

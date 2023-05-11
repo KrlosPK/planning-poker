@@ -5,10 +5,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
-import { GameActions } from 'src/app/state/index';
-import { AppState } from 'src/app/interfaces/game.interface';
+import { GameService } from 'src/app/services/game.service';
 
 @Component({
   selector: 'app-create-game-page',
@@ -21,14 +19,23 @@ export class CreateGamePageComponent {
 
   constructor(
     private fb: FormBuilder,
-    private store: Store<AppState>,
-    private router: Router
+    private router: Router,
+    private gameService: GameService
   ) {
     this.createForm();
+  }
 
-    this.store
-      .select('gameName')
-      .subscribe((gameName) => (this.gameName = gameName));
+  createGame() {
+    if (this.form.invalid) {
+      return Object.values(this.form.controls).forEach((control) => {
+        control.markAsTouched();
+      });
+    }
+
+    this.gameService.changeGameName(this.form.get('gameName')?.value);
+    this.gameService.changeCreateGame(false);
+
+    return this.router.navigate(['/game']);
   }
 
   get invalidGameName(): AbstractControl {
@@ -68,26 +75,10 @@ export class CreateGamePageComponent {
           Validators.minLength(5),
           Validators.maxLength(20),
           Validators.pattern(
-            /^(?=.*[a-zA-Z])(?!.*[_.*#\/-])[a-zA-Z0-9\s]*[0-9]{0,3}[a-zA-Z0-9\s]*$/
+            /^(?=.*[a-zA-Z])(?!.*[_.*#\/-])[a-zA-Z\s]*[0-9]{0,3}[a-zA-Z\s]*$/
           ),
         ],
       ],
     });
-  }
-
-  createGame() {
-    if (this.form.invalid) {
-      return Object.values(this.form.controls).forEach((control) => {
-        control.markAsTouched();
-      });
-    }
-    this.changeGameName();
-
-    return this.router.navigate(['/game']);
-  }
-
-  changeGameName() {
-    const action = new GameActions.changeGameNameAction(this.gameName);
-    this.store.dispatch(action);
   }
 }
