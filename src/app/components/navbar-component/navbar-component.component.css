@@ -1,12 +1,15 @@
 .navbar {
   align-items: center;
-  display: flex;
+  display: grid;
   gap: 1rem;
-  justify-content: space-between;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
   list-style: none;
   min-height: 3rem;
-  padding: 2rem 6rem;
+  padding: 1.5rem 2rem;
+  position: absolute;
   width: 100%;
+  z-index: 2;
 }
 .navbar a {
   transition: color 250ms ease-in-out;

@@ -15,7 +15,6 @@ export class UserService {
 
   constructor() {
     this.user = new User();
-    this.user.username = '';
     this.user$ = new Subject<User>();
   }
 
