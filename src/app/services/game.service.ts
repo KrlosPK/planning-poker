@@ -4,6 +4,8 @@ import { Observable, Subject } from 'rxjs';
 export class Game {
   gameName: string = '';
   isCreateGame: boolean = true;
+  averageScore: number = 0;
+  gameUrl: string = '';
 }
 
 @Injectable({

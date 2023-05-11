@@ -15,7 +15,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class PanelOptionsComponent implements OnInit {
   form!: FormGroup;
-  username: string = '';
+  username: string = 'a';
 
   constructor(
     private fb: FormBuilder,
