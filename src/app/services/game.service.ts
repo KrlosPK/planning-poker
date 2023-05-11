@@ -34,5 +34,4 @@ export class GameService {
   getCreateGame$(): Observable<Game> {
     return this.game$.asObservable();
   }
-
 }

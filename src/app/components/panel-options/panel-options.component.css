@@ -1,0 +1,125 @@
+.panel--options {
+  align-items: center;
+  backdrop-filter: blur(2px);
+  background: rgba(10, 9, 12, 0.25);
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  translate: -50% -50%;
+  width: 100%;
+}
+.panel--options__form {
+  align-items: center;
+  background-color: var(--secoundary-color);
+  border: 1px solid #bb65ff;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+  justify-content: center;
+  padding: 5rem 6rem;
+}
+.panel--options__input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.panel--options__input label {
+  font-size: 14px;
+  font-weight: 700;
+}
+.panel--options__input input {
+  background: linear-gradient(
+    0deg,
+    rgba(100, 41, 205, 0.08),
+    rgba(100, 41, 205, 0.08)
+  );
+  border: 1px solid #bb65ff;
+  border-radius: 100px;
+  padding: 8px;
+  padding-left: 1rem;
+  transition: border-color 300ms ease-in-out;
+  width: 300px;
+}
+.panel--options__input input:hover {
+  border: 1px solid #fa65ff;
+}
+.panel--options__input input:focus {
+  outline: none;
+}
+.panel--options__error {
+  color: red;
+  font-size: 12px;
+  max-width: 300px;
+}
+.is-invalid {
+  border: 1px solid red !important;
+}
+
+.panel--options__game--mode {
+  display: flex;
+  gap: 1.5rem;
+}
+.panel--options__game--mode div {
+  display: flex;
+  gap: 0.7rem;
+}
+
+input[type="radio"]:checked,
+input[type="radio"]:not(:checked) {
+  left: -9999px;
+  position: absolute;
+}
+input[type="radio"]:checked + label,
+input[type="radio"]:not(:checked) + label {
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 400;
+  line-height: 20px;
+  padding-left: 28px;
+  position: relative;
+}
+input[type="radio"]:checked + label:before,
+input[type="radio"]:not(:checked) + label:before {
+  background: linear-gradient(
+      0deg,
+      rgba(100, 41, 205, 0.3),
+      rgba(100, 41, 205, 0.3)
+    ),
+    linear-gradient(0deg, #bb65ff, #bb65ff);
+
+  border: 1px solid #bb65ff;
+  border-radius: 100%;
+  content: "";
+  height: 18px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 18px;
+}
+input[type="radio"]:checked + label:after,
+input[type="radio"]:not(:checked) + label:after {
+  background: var(--bg-color);
+  border-radius: 100%;
+  content: "";
+  height: 12px;
+  left: 4px;
+  position: absolute;
+  top: 4px;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  width: 12px;
+}
+input[type="radio"]:not(:checked) + label:after {
+  opacity: 0;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+}
+input[type="radio"]:checked + label:after {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}

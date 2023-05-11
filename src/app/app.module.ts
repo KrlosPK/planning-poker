@@ -10,6 +10,8 @@ import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.com
 import { NavbarComponentComponent } from './components/navbar-component/navbar-component.component';
 import { CardsComponentComponent } from './components/cards-component/cards-component.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PanelOptionsComponent } from './components/panel-options/panel-options.component';
+import { TableComponent } from './components/table/table.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +22,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     NotFoundPageComponent,
     NavbarComponentComponent,
     CardsComponentComponent,
+    PanelOptionsComponent,
+    TableComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
