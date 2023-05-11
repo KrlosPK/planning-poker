@@ -1,0 +1,56 @@
+<section class="panel--options" *ngIf="!username">
+  <form
+    class="panel--options__form"
+    [formGroup]="form"
+    (ngSubmit)="createUser()"
+  >
+    <div class="panel--options__input">
+      <label for="username">Tu nombre</label>
+      <input
+        minlength="5"
+        maxlength="20"
+        formControlName="username"
+        autocomplete="off"
+        name="username"
+        id="username"
+        [class.is-invalid]="invalidUsername.touched && invalidUsername.invalid"
+        placeholder="Vale"
+      />
+      <small *ngIf="invalidUsername.invalid" class="panel--options__error">{{
+        getUsernameErrorMessage()
+      }}</small>
+    </div>
+    <div class="panel--options__game--mode">
+      <div>
+        <input
+          type="radio"
+          id="player"
+          value="player"
+          formControlName="gamemode"
+          checked
+        />
+        <label for="player">Jugador</label>
+      </div>
+      <div>
+        <input
+          type="radio"
+          id="spectator"
+          formControlName="gamemode"
+          value="spectator"
+        />
+        <label for="spectator">Espectador</label>
+      </div>
+    </div>
+    <small *ngIf="invalidGamemode.invalid" class="panel--options__error">{{
+      getGamemodeErrorMessage()
+    }}</small>
+    <button
+      [disabled]="invalidUsername.touched && invalidUsername.invalid"
+      type="button"
+      (click)="createUser()"
+      class="button"
+    >
+      Crear partida
+    </button>
+  </form>
+</section>

@@ -45,6 +45,7 @@ a {
   font-size: 1rem;
   font-weight: 600;
   padding: 12px 24px;
+  user-select: none;
 }
 .button:active {
   scale: 0.99;
