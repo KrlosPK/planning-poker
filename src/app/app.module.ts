@@ -1,6 +1,5 @@
-import { NgModule, isDevMode } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { StoreModule } from '@ngrx/store';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,8 +10,6 @@ import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.com
 import { NavbarComponentComponent } from './components/navbar-component/navbar-component.component';
 import { CardsComponentComponent } from './components/cards-component/cards-component.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { gameReducer } from './reducers/game.reducer';
 
 @NgModule({
   declarations: [
@@ -28,9 +25,6 @@ import { gameReducer } from './reducers/game.reducer';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({}, {}),
-    StoreModule.forFeature('gameName', gameReducer),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -3,12 +3,12 @@
     <ul class="navbar">
       <li class="logo">
         <img src="./assets/ficha-de-poker 1.png" alt="logo planning poker" />
-        <h2>Crear partida</h2>
+        <h2 *ngIf="isCreateGame">Crear partida</h2>
       </li>
       <li *ngIf="gameName">
         <h3 class="game-name">{{ gameName }}</h3>
       </li>
-      <li class="invite--section">
+      <li class="invite--section" *ngIf="!isCreateGame">
         <img
           src="./assets/Logo.png"
           width="36"

@@ -43,6 +43,7 @@
 .create--game__error {
   color: red;
   font-size: 12px;
+  max-width: 300px;
 }
 .is-invalid {
   border: 1px solid red !important;
