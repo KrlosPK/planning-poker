@@ -13,7 +13,8 @@ export class NavbarComponentComponent {
   constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
-    this.store.select('gameName')
-      .subscribe(gameName => this.gameName = gameName)
+    this.store
+      .select('gameName')
+      .subscribe((gameName) => (this.gameName = gameName));
   }
 }

@@ -7,5 +7,3 @@ export class changeGameNameAction implements Action {
 
   constructor(public payload: string) {}
 }
-
-export type actions = changeGameNameAction;

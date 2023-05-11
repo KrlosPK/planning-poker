@@ -10,15 +10,15 @@
         name="gameName"
         [(ngModel)]="gameName"
         id="gameName"
-        [class.is-invalid]="invalidGameName"
+        [class.is-invalid]="invalidGameName.touched && invalidGameName.invalid"
         placeholder="sprint 32"
       />
-      <small *ngIf="invalidGameName" class="create--game__error"
-        >Debe tener entre 5 y 20 caracteres</small
-      >
+      <small *ngIf="invalidGameName.invalid" class="create--game__error">{{
+        getGameNameErrorMessage()
+      }}</small>
     </div>
     <button
-      [disabled]="invalidGameName"
+      [disabled]="invalidGameName.touched && invalidGameName.invalid"
       type="button"
       (click)="createGame()"
       class="button"
