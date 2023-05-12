@@ -16,6 +16,7 @@ export class TableComponent implements OnInit {
   player: User[] = [];
 
   hasChosenCardPlayers: number = 0;
+  isGameOver: boolean = false;
   isRevealCards: boolean = false;
   users: User[] = [
     { id: 2, score: 5, username: 'Karen', rol: Role.PLAYER, hasSelected: true},
@@ -55,5 +56,10 @@ export class TableComponent implements OnInit {
 
   revealCards() {
     this.gameService.revealCards(true);
+    this.isGameOver = true;
+  }
+  restartGame() {
+    this.gameService.revealCards(false);
+    this.isGameOver = false;
   }
 }
