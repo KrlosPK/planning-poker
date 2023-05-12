@@ -13,9 +13,10 @@ export class TableComponent implements OnInit {
   score: number = 0;
   rol: string = '';
   hasSelected: boolean = false;
-  player: User[] = [];
+  player: User[] | null = [];
 
   hasChosenCardPlayers: number = 0;
+  isGameOver: boolean = false;
   isRevealCards: boolean = false;
   users: User[] = [
     { id: 2, score: 5, username: 'Karen', rol: Role.PLAYER, hasSelected: true},
@@ -33,6 +34,11 @@ export class TableComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    const savedPlayer = sessionStorage.getItem('player');
+    if (savedPlayer) {
+      this.player = JSON.parse(savedPlayer);
+    }
+
     this.gameService
       .getRevealCards$()
       .subscribe(({ isRevealCard }) => (this.isRevealCards = isRevealCard));
@@ -55,5 +61,10 @@ export class TableComponent implements OnInit {
 
   revealCards() {
     this.gameService.revealCards(true);
+    this.isGameOver = true;
+  }
+  restartGame() {
+    this.gameService.revealCards(false);
+    this.isGameOver = false;
   }
 }

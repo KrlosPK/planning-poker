@@ -28,6 +28,7 @@ export class CreateGamePageComponent implements OnInit {
   ngOnInit(): void {
     sessionStorage.setItem('gameName', '');
     sessionStorage.setItem('username', '');
+    sessionStorage.setItem('player', '');
     sessionStorage.setItem('isCreateGame', 'true');
   }
 

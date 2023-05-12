@@ -39,8 +39,19 @@
   <div class="table outside--table">
     <div class="table medium--table">
       <div class="table inner--table">
-        <button class="button button--purple" (click)="revealCards()">
+        <button
+          class="button button--purple"
+          *ngIf="!isGameOver"
+          (click)="revealCards()"
+        >
           Revelar cartas
+        </button>
+        <button
+          class="button button--purple"
+          *ngIf="isGameOver"
+          (click)="restartGame()"
+        >
+          Reiniciar juego
         </button>
       </div>
     </div>
