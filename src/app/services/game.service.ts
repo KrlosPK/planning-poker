@@ -6,6 +6,7 @@ export class Game {
   isCreateGame: boolean = true;
   averageScore: number = 0;
   gameUrl: string = '';
+  isRevealCard: boolean = false;
 }
 
 @Injectable({
@@ -34,6 +35,14 @@ export class GameService {
     this.game$.next(this.game);
   }
   getCreateGame$(): Observable<Game> {
+    return this.game$.asObservable();
+  }
+
+  revealCards(revealCard: boolean) {
+    this.game.isRevealCard = revealCard;
+    this.game$.next(this.game);
+  }
+  getRevealCards$(): Observable<Game> {
     return this.game$.asObservable();
   }
 }
