@@ -40,7 +40,7 @@ export class NavbarComponentComponent implements OnInit {
       .subscribe(({ isCreateGame }) => (this.isCreateGame = isCreateGame));
 
     this.userService
-      .getUsername$()
+      .getUserData$()
       .subscribe(({ username }) => (this.username = username));
   }
 

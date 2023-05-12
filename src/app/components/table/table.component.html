@@ -1,5 +1,24 @@
 <section class="table--container">
   <div class="cards">
+    <div *ngFor="let attribute of player">
+      <div
+        class="card"
+        [ngClass]="{
+          'card--spectator': attribute.rol === 'spectator',
+          'card--pressed': attribute.hasSelected && !isRevealCards
+        }"
+      >
+        <span
+          *ngIf="
+            attribute.score && attribute.rol !== 'spectator' && isRevealCards
+          "
+          >{{ attribute.score }}</span
+        >
+        <p>
+          {{ attribute.username }}
+        </p>
+      </div>
+    </div>
     <div *ngFor="let card of users">
       <div
         class="card"

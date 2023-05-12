@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GameService } from 'src/app/services/game.service';
-import { Role, User } from 'src/app/services/user.service';
+import { Role, User, UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-table',
@@ -8,11 +8,16 @@ import { Role, User } from 'src/app/services/user.service';
   styleUrls: ['./table.component.css'],
 })
 export class TableComponent implements OnInit {
-  players: User[] = [];
+  // ? User data
+  username: string = '';
+  score: number = 0;
+  rol: string = '';
+  hasSelected: boolean = false;
+  player: User[] = [];
+
   hasChosenCardPlayers: number = 0;
   isRevealCards: boolean = false;
   users: User[] = [
-    { id: 1, score: 1, username: 'Carlos', rol: Role.OWNER, hasSelected: false},
     { id: 2, score: 5, username: 'Karen', rol: Role.PLAYER, hasSelected: true},
     { id: 3, score: 13, username: 'Stiven', rol: Role.PLAYER, hasSelected: true},
     { id: 4, score: 21, username: 'Juan', rol: Role.PLAYER, hasSelected: true},
@@ -22,12 +27,30 @@ export class TableComponent implements OnInit {
     { id: 8, score: 8, username: 'Kevin', rol: Role.PLAYER, hasSelected: true},
   ];
 
-  constructor(private gameService: GameService) {}
+  constructor(
+    private gameService: GameService,
+    private userService: UserService
+  ) {}
 
   ngOnInit() {
     this.gameService
       .getRevealCards$()
       .subscribe(({ isRevealCard }) => (this.isRevealCards = isRevealCard));
+
+    this.userService.getUserData$().subscribe(({ username, rol }) => {
+      this.username = username;
+      this.rol = rol;
+      this.player = [
+        {
+          id: 1,
+          rol: this.rol,
+          username: this.username,
+          score: this.score,
+          hasSelected: this.hasSelected,
+        },
+      ];
+      sessionStorage.setItem('player', JSON.stringify(this.player));
+    });
   }
 
   revealCards() {

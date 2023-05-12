@@ -30,7 +30,7 @@ export class PanelOptionsComponent implements OnInit {
       this.username = sessionStorage.getItem('username');
     }
     this.userService
-      .getUsername$()
+      .getUserData$()
       .subscribe(({ username }) => (this.username = username));
   }
 
@@ -42,7 +42,9 @@ export class PanelOptionsComponent implements OnInit {
     }
 
     sessionStorage.setItem('username', this.form.get('username')?.value);
+    sessionStorage.setItem('gamemode', this.form.get('gamemode')?.value);
     this.userService.changeUsername(this.form.get('username')?.value);
+    this.userService.changeRol(this.form.get('gamemode')?.value);
 
     return this.router.navigate(['/game']);
   }
@@ -102,7 +104,7 @@ export class PanelOptionsComponent implements OnInit {
           ),
         ],
       ],
-      gamemode: ['player', [Validators.required]],
+      gamemode: ['owner', [Validators.required]],
     });
   }
 }
