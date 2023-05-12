@@ -1,8 +1,8 @@
 .table--container {
   left: 50%;
+  margin-top: 5rem;
   position: absolute;
-  top: 55%;
-  translate: -50% -50%;
+  translate: -50%;
 }
 .cards {
   display: flex;
@@ -22,12 +22,7 @@
   width: 35px;
 }
 .card:hover {
-  background: linear-gradient(
-      0deg,
-      rgba(157, 157, 161, 0.6),
-      rgba(157, 157, 161, 0.6)
-    ),
-    linear-gradient(0deg, #bb65ff, #bb65ff);
+  border-color: #e4a4ff;
 }
 .card--pressed {
   background: #e4a4ff;
@@ -48,7 +43,6 @@
 }
 .card--spectator {
   background: url("../../../assets/Logo.png") center no-repeat;
-  background-color: #6429cd;
   background-size: contain;
   border-radius: 50%;
   height: 56px;

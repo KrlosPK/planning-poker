@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
 export class Card {
-  score: number[] = [];
+  score: number | string = 0;
+  averageScore?: number[] = [];
 }
 
 @Injectable({
@@ -18,7 +19,9 @@ export class CardService {
   }
 
   increaseScore(score: number) {
-    this.card.score = [...this.card.score, score];
+    if (this.card.averageScore) {
+      this.card.averageScore = [...this.card.averageScore, score];
+    }
     this.card$.next(this.card);
   }
 

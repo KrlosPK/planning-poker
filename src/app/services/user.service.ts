@@ -12,6 +12,7 @@ export class User {
   username: string = '';
   score: number = 0;
   rol: string = '';
+  hasSelected: boolean = false;
 }
 
 @Injectable({

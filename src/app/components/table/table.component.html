@@ -3,7 +3,10 @@
     <div *ngFor="let card of users">
       <div
         class="card"
-        [ngClass]="{ 'card--spectator': card.rol === 'spectator' }"
+        [ngClass]="{
+          'card--spectator': card.rol === 'spectator',
+          'card--pressed': card.hasSelected && !isRevealCards
+        }"
       >
         <span *ngIf="card.score && card.rol !== 'spectator' && isRevealCards">{{
           card.score

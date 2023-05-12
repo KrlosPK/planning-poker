@@ -1,0 +1,10 @@
+<section class="select--cards">
+  <h2 class="select--cards__title">
+    Elige una carta <span class="select--cards__hand">👆</span>
+  </h2>
+  <article class="select--cards__container">
+    <button class="select--card" *ngFor="let card of cards">
+      <p class="select--card__score">{{ card.score }}</p>
+    </button>
+  </article>
+</section>
