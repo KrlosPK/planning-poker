@@ -13,7 +13,7 @@ export class TableComponent implements OnInit {
   score: number = 0;
   rol: string = '';
   hasSelected: boolean = false;
-  player: User[] = [];
+  player: User[] | null = [];
 
   hasChosenCardPlayers: number = 0;
   isGameOver: boolean = false;
@@ -34,6 +34,11 @@ export class TableComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    const savedPlayer = sessionStorage.getItem('player');
+    if (savedPlayer) {
+      this.player = JSON.parse(savedPlayer);
+    }
+
     this.gameService
       .getRevealCards$()
       .subscribe(({ isRevealCard }) => (this.isRevealCards = isRevealCard));
