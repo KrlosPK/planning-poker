@@ -42,8 +42,11 @@
 .card p {
   bottom: -1.5rem;
   left: 50%;
+  max-width: 8ch;
+  overflow: hidden;
   position: absolute;
   text-align: center;
+  text-overflow: ellipsis;
   translate: -50%;
   user-select: none;
 }
