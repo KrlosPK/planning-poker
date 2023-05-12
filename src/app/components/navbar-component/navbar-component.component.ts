@@ -46,6 +46,7 @@ export class NavbarComponentComponent implements OnInit {
 
   toggleModal() {
     this.isModalOpen = !this.isModalOpen;
+    this.buttonText = 'Copiar link';
   }
 
   copyToClipboard() {
