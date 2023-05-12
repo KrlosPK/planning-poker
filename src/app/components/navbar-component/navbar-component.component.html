@@ -16,8 +16,40 @@
           alt="imagen de perfil de Google"
         />
         {{ username }}
-        <button class="invite--button">Invitar jugadores</button>
+        <button class="invite--button" (click)="toggleModal()">
+          Invitar jugadores
+        </button>
       </li>
     </ul>
   </nav>
 </header>
+<section class="modal" *ngIf="isModalOpen">
+  <div class="modal--bg">
+    <header class="modal__header">
+      <h2 class="header__title">Invitar jugadores</h2>
+      <button
+        type="button"
+        class="modal__close--button"
+        (click)="toggleModal()"
+      >
+        <img src="./assets/Group.png" alt="close button" />
+      </button>
+    </header>
+    <article class="modal__info">
+      <input
+        type="text"
+        [value]="roomUrl"
+        id="roomUrl"
+        readonly
+        placeholder="enlace de la sala"
+      />
+      <button
+        class="button modal__button"
+        [ngClass]="{ 'modal__button--copied': buttonText === 'Copiado' }"
+        (click)="copyToClipboard()"
+      >
+        {{ buttonText }}
+      </button>
+    </article>
+  </div>
+</section>

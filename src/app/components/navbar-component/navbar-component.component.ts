@@ -11,6 +11,9 @@ export class NavbarComponentComponent implements OnInit {
   gameName: string = '';
   isCreateGame: boolean = true;
   username: string = '';
+  roomUrl: string = 'https://planning-poker-app.netlify.app/loading-page'
+  isModalOpen: boolean = false;
+  buttonText: string = 'Copiar link';
 
   constructor(private gameService: GameService, private userService: UserService) {}
 
@@ -26,5 +29,19 @@ export class NavbarComponentComponent implements OnInit {
     this.userService
       .getUsername$()
       .subscribe(({ username }) => (this.username = username));
+  }
+
+  toggleModal() {
+    this.isModalOpen = !this.isModalOpen;
+  }
+
+  copyToClipboard() {
+    const textField = document.createElement('textarea');
+    textField.innerText = this.roomUrl;
+    document.body.appendChild(textField);
+    textField.select();
+    document.execCommand('copy');
+    textField.remove();
+    this.buttonText = 'Copiado';
   }
 }
