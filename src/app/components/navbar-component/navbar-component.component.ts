@@ -10,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 export class NavbarComponentComponent implements OnInit {
   gameName: string | null = '';
   isCreateGame: boolean | null = true;
-  username: string = '';
+  username: string | null = '';
   roomUrl: string = 'https://planning-poker-app.netlify.app/loading-page';
   isModalOpen: boolean = false;
   buttonText: string = 'Copiar link';
@@ -24,9 +24,13 @@ export class NavbarComponentComponent implements OnInit {
     if (!this.gameName) {
       this.gameName = sessionStorage.getItem('gameName');
     }
+    if (!this.username) {
+      this.username = sessionStorage.getItem('username');
+    }
     if (this.isCreateGame) {
       this.isCreateGame = !!sessionStorage.getItem('isCreateGame');
     }
+
     this.gameService.getGameName$().subscribe(({ gameName }) => {
       return (this.gameName = gameName);
     });
@@ -36,12 +40,13 @@ export class NavbarComponentComponent implements OnInit {
       .subscribe(({ isCreateGame }) => (this.isCreateGame = isCreateGame));
 
     this.userService
-      .getUsername$()
+      .getUserData$()
       .subscribe(({ username }) => (this.username = username));
   }
 
   toggleModal() {
     this.isModalOpen = !this.isModalOpen;
+    this.buttonText = 'Copiar link';
   }
 
   copyToClipboard() {

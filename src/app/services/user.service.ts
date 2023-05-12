@@ -27,11 +27,15 @@ export class UserService {
     this.user$ = new Subject<User>();
   }
 
+  changeRol(newRol: string) {
+    this.user.rol = newRol;
+    this.user$.next(this.user);
+  }
   changeUsername(newUsername: string) {
     this.user.username = newUsername;
     this.user$.next(this.user);
   }
-  getUsername$(): Observable<User> {
+  getUserData$(): Observable<User> {
     return this.user$.asObservable();
   }
 }

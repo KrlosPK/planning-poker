@@ -1,12 +1,13 @@
 .navbar {
   align-items: center;
+  backdrop-filter: blur(1px);
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
   list-style: none;
   min-height: 3rem;
-  padding: 1.5rem 2rem;
+  padding: 0.8rem 1.5rem;
   position: absolute;
   width: 100%;
   z-index: 2;
