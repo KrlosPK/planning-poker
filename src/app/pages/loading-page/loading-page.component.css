@@ -27,6 +27,9 @@
   gap: 1rem;
   justify-content: center;
 }
+.spin {
+  animation: spinwheel 1.5s linear infinite;
+}
 
 @keyframes loading {
   from {
@@ -34,5 +37,13 @@
   }
   to {
     opacity: 0.075;
+  }
+}
+@keyframes spinwheel {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
   }
 }
