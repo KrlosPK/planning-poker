@@ -1,10 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
+export enum Role {
+  OWNER = 'owner',
+  PLAYER = 'player',
+  SPECTATOR = 'spectator',
+}
+
 export class User {
+  id: number = 0;
   username: string = '';
-  isPlayer: boolean = true;
   score: number = 0;
+  rol: string = '';
+  hasSelected: boolean = false;
 }
 
 @Injectable({

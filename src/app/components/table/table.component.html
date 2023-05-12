@@ -1,8 +1,14 @@
 <section class="table--container">
   <div class="cards">
     <div *ngFor="let card of users">
-      <div class="card" [ngClass]="{ 'card--spectator': !card.isPlayer }">
-        <span *ngIf="card.score && card.isPlayer && isRevealCards">{{
+      <div
+        class="card"
+        [ngClass]="{
+          'card--spectator': card.rol === 'spectator',
+          'card--pressed': card.hasSelected && !isRevealCards
+        }"
+      >
+        <span *ngIf="card.score && card.rol !== 'spectator' && isRevealCards">{{
           card.score
         }}</span>
         <p>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GameService } from 'src/app/services/game.service';
-import { User } from 'src/app/services/user.service';
+import { Role, User } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-table',
@@ -12,14 +12,14 @@ export class TableComponent implements OnInit {
   hasChosenCardPlayers: number = 0;
   isRevealCards: boolean = false;
   users: User[] = [
-    { score: 1, username: 'Carlos', isPlayer: true },
-    { score: 2, username: 'Karen', isPlayer: true },
-    { score: 3, username: 'Stiven', isPlayer: true },
-    { score: 4, username: 'Juan', isPlayer: false },
-    { score: 5, username: 'Andres', isPlayer: true },
-    { score: 6, username: 'Lau', isPlayer: true },
-    { score: 7, username: 'Luisa', isPlayer: false },
-    { score: 8, username: 'Kevin', isPlayer: false },
+    { id: 1, score: 1, username: 'Carlos', rol: Role.OWNER, hasSelected: false},
+    { id: 2, score: 5, username: 'Karen', rol: Role.PLAYER, hasSelected: true},
+    { id: 3, score: 13, username: 'Stiven', rol: Role.PLAYER, hasSelected: true},
+    { id: 4, score: 21, username: 'Juan', rol: Role.PLAYER, hasSelected: true},
+    { id: 5, score: 21, username: 'Andres', rol: Role.PLAYER, hasSelected: true},
+    { id: 6, score: 3, username: 'Lau', rol: Role.SPECTATOR, hasSelected: true},
+    { id: 7, score: 13, username: 'Luisa', rol: Role.PLAYER, hasSelected: true},
+    { id: 8, score: 8, username: 'Kevin', rol: Role.PLAYER, hasSelected: true},
   ];
 
   constructor(private gameService: GameService) {}

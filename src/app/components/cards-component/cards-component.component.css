@@ -1,0 +1,76 @@
+.select--cards {
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  left: 50%;
+  max-width: 1000px;
+  min-width: 600px;
+  overflow: scroll;
+  position: absolute;
+  translate: -50%;
+  user-select: none;
+  width: 75%;
+}
+.select--cards__title {
+  font-size: var(--title-size);
+  font-weight: 600;
+  text-align: center;
+}
+.select--cards__hand {
+  display: inline-block;
+  rotate: 180deg;
+}
+.select--cards__container {
+  display: flex;
+  width: fit-content;
+}
+.select--card {
+  align-items: center;
+  background-color: transparent;
+  border: 2px solid #bb65ff;
+  border-radius: 7px;
+  box-shadow: inset 0px 0px 6px rgba(189, 189, 255, 0.6);
+  cursor: pointer;
+  display: flex;
+  filter: drop-shadow(0px 5px 10px rgba(100, 41, 205, 0.6));
+  height: 80px;
+  justify-content: center;
+  margin: 1rem 2rem 0.5rem 0;
+  transition: translate 300ms ease;
+  width: 48px;
+}
+.select--card:active {
+  scale: 0.96;
+}
+.select--card:hover {
+  background: #e4a4ff;
+  translate: 0 -8px;
+}
+.select--card:hover .select--card__score {
+  color: #330072;
+}
+.select--card--pressed {
+  background: #e4a4ff;
+}
+.select--card__score {
+  font-weight: 600;
+  user-select: none;
+}
+
+.select--cards::-webkit-scrollbar {
+  background-color: var(--bg-color);
+  height: 5px;
+  width: 0;
+}
+.select--cards::-webkit-scrollbar-thumb {
+  background-color: var(--hover-color);
+  border-radius: 5px;
+}
+
+@media (max-width: 767px) {
+  .select--cards {
+    width: 100%;
+    overflow: scroll;
+  }
+}
