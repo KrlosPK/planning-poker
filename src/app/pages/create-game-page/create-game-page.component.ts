@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -13,7 +13,7 @@ import { GameService } from 'src/app/services/game.service';
   templateUrl: './create-game-page.component.html',
   styleUrls: ['./create-game-page.component.css'],
 })
-export class CreateGamePageComponent {
+export class CreateGamePageComponent implements OnInit {
   form!: FormGroup;
   gameName: string = '';
 
@@ -25,6 +25,11 @@ export class CreateGamePageComponent {
     this.createForm();
   }
 
+  ngOnInit(): void {
+    sessionStorage.setItem('gameName', '');
+    sessionStorage.setItem('isCreateGame', 'true');
+  }
+
   createGame() {
     if (this.form.invalid) {
       return Object.values(this.form.controls).forEach((control) => {
@@ -32,7 +37,10 @@ export class CreateGamePageComponent {
       });
     }
 
+    sessionStorage.setItem('gameName', this.form.get('gameName')?.value);
     this.gameService.changeGameName(this.form.get('gameName')?.value);
+
+    sessionStorage.setItem('isCreateGame', '');
     this.gameService.changeCreateGame(false);
 
     return this.router.navigate(['/game']);

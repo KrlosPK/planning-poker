@@ -1,8 +1,14 @@
 .table--container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   left: 50%;
-  margin-top: 5rem;
   position: absolute;
-  translate: -50%;
+  top: 50%;
+  translate: -50% -50%;
+}
+.table--flex {
+  position: relative;
 }
 .cards {
   display: flex;
@@ -89,14 +95,19 @@
   color: #ffffff;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1325px) {
   .outside--table {
-    width: 310px;
+    width: 360px;
   }
   .medium--table {
-    width: 260px;
+    width: 310px;
   }
   .inner--table {
-    width: 210px;
+    width: 260px;
+  }
+}
+@media (max-height: 768px) {
+  .table--container {
+    top: 40%;
   }
 }

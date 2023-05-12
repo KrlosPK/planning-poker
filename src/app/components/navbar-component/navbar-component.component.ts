@@ -8,19 +8,28 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./navbar-component.component.css'],
 })
 export class NavbarComponentComponent implements OnInit {
-  gameName: string = '';
-  isCreateGame: boolean = true;
+  gameName: string | null = '';
+  isCreateGame: boolean | null = true;
   username: string = '';
-  roomUrl: string = 'https://planning-poker-app.netlify.app/loading-page'
+  roomUrl: string = 'https://planning-poker-app.netlify.app/loading-page';
   isModalOpen: boolean = false;
   buttonText: string = 'Copiar link';
 
-  constructor(private gameService: GameService, private userService: UserService) {}
+  constructor(
+    private gameService: GameService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
-    this.gameService
-      .getGameName$()
-      .subscribe(({ gameName }) => (this.gameName = gameName));
+    if (!this.gameName) {
+      this.gameName = sessionStorage.getItem('gameName');
+    }
+    if (this.isCreateGame) {
+      this.isCreateGame = !!sessionStorage.getItem('isCreateGame');
+    }
+    this.gameService.getGameName$().subscribe(({ gameName }) => {
+      return (this.gameName = gameName);
+    });
 
     this.gameService
       .getCreateGame$()
