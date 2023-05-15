@@ -27,7 +27,7 @@ export class NavbarComponentComponent implements OnInit {
     if (!this.username) {
       this.username = sessionStorage.getItem('username');
     }
-    if (this.isCreateGame) {
+    if (!this.isCreateGame) {
       this.isCreateGame = Boolean(sessionStorage.getItem('isCreateGame'));
     }
 
