@@ -5,7 +5,7 @@ export class Card {
   index?: number = 0;
   score: number | string = 0;
   averageScore?: number[] = [];
-  showCard?: boolean = false;
+  showCard?: boolean = true;
 }
 
 @Injectable({
