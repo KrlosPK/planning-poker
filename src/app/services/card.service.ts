@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
 export class Card {
+  index?: number = 0;
   score: number | string = 0;
   averageScore?: number[] = [];
+  showCard?: boolean = false;
 }
 
 @Injectable({
@@ -24,8 +26,16 @@ export class CardService {
     }
     this.card$.next(this.card);
   }
+  resetIndex(newIndex: number) {
+    this.card.index = newIndex;
+    this.card$.next(this.card);
+  }
+  toggleCard(newShowCard: boolean) {
+    this.card.showCard = newShowCard;
+    this.card$.next(this.card);
+  }
 
-  getScoreAverage$(): Observable<Card> {
+  getCardData$(): Observable<Card> {
     // const totalScore = this.card.score.reduce((a, b) => a + b, 0);
     // return totalScore / this.card.score.length;
     return this.card$.asObservable();

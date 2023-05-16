@@ -5,7 +5,6 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -19,7 +18,6 @@ export class PanelOptionsComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router,
     private userService: UserService
   ) {
     this.createForm();
@@ -42,11 +40,10 @@ export class PanelOptionsComponent implements OnInit {
     }
 
     sessionStorage.setItem('username', this.form.get('username')?.value);
-    sessionStorage.setItem('gamemode', this.form.get('gamemode')?.value);
     this.userService.changeUsername(this.form.get('username')?.value);
-    this.userService.changeRol(this.form.get('gamemode')?.value);
 
-    return this.router.navigate(['/game']);
+    sessionStorage.setItem('gamemode', this.form.get('gamemode')?.value);
+    this.userService.changeRol(this.form.get('gamemode')?.value);
   }
 
   get invalidUsername(): AbstractControl {

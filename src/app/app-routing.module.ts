@@ -9,8 +9,8 @@ const routes: Routes = [
   { path: '', redirectTo: 'loading-page', pathMatch: 'full' },
   { path: 'loading-page', component:  LoadingPageComponent},
   { path: 'create-game', component: CreateGamePageComponent},
-  { path: '404', component: NotFoundPageComponent },
   { path: 'game', component: GamePageComponent },
+  { path: '404', component: NotFoundPageComponent },
   { path: '**', component: NotFoundPageComponent }
 ];
 

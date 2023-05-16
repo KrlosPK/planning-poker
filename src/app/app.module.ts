@@ -12,6 +12,7 @@ import { CardsComponentComponent } from './components/cards-component/cards-comp
 import { ReactiveFormsModule } from '@angular/forms';
 import { PanelOptionsComponent } from './components/panel-options/panel-options.component';
 import { TableComponent } from './components/table/table.component';
+import { NavbarHomeComponent } from './components/navbar-home/navbar-home.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { TableComponent } from './components/table/table.component';
     CardsComponentComponent,
     PanelOptionsComponent,
     TableComponent,
+    NavbarHomeComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],

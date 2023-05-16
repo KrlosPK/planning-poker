@@ -29,7 +29,6 @@ export class CreateGamePageComponent implements OnInit {
     sessionStorage.setItem('gameName', '');
     sessionStorage.setItem('username', '');
     sessionStorage.setItem('player', '');
-    sessionStorage.setItem('isCreateGame', 'true');
   }
 
   createGame() {
@@ -41,9 +40,6 @@ export class CreateGamePageComponent implements OnInit {
 
     sessionStorage.setItem('gameName', this.form.get('gameName')?.value);
     this.gameService.changeGameName(this.form.get('gameName')?.value);
-
-    sessionStorage.setItem('isCreateGame', '');
-    this.gameService.changeCreateGame(false);
 
     return this.router.navigate(['/game']);
   }

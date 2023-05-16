@@ -8,12 +8,11 @@
           height="48"
           alt="logo planning poker"
         />
-        <h2 *ngIf="isCreateGame">Crear partida</h2>
       </li>
       <li *ngIf="gameName">
         <h3 class="game-name">{{ gameName }}</h3>
       </li>
-      <li class="invite--section" *ngIf="!isCreateGame">
+      <li class="invite--section">
         <img
           src="./assets/Logo.png"
           width="36"
