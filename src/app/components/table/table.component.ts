@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CardService } from 'src/app/services/card.service';
 import { GameService } from 'src/app/services/game.service';
 import { Role, User, UserService } from 'src/app/services/user.service';
 
@@ -30,7 +31,8 @@ export class TableComponent implements OnInit {
 
   constructor(
     private gameService: GameService,
-    private userService: UserService
+    private userService: UserService,
+    private cardService: CardService
   ) {}
 
   ngOnInit() {
@@ -40,31 +42,39 @@ export class TableComponent implements OnInit {
     }
 
     this.gameService
-      .getRevealCards$()
+      .getGameData$()
       .subscribe(({ isRevealCard }) => (this.isRevealCards = isRevealCard));
 
-    this.userService.getUserData$().subscribe(({ username, rol }) => {
-      this.username = username;
-      this.rol = rol;
-      this.player = [
-        {
-          id: 1,
-          rol: this.rol,
-          username: this.username,
-          score: this.score,
-          hasSelected: this.hasSelected,
-        },
-      ];
-      sessionStorage.setItem('player', JSON.stringify(this.player));
-    });
+    this.userService
+      .getUserData$()
+      .subscribe(({ username, rol, score, hasSelected }) => {
+        this.username = username;
+        this.rol = rol;
+        this.score = score;
+        this.hasSelected = hasSelected;
+        this.player = [
+          {
+            id: 1,
+            rol: this.rol,
+            username: this.username,
+            score: this.score,
+            hasSelected: this.hasSelected,
+          },
+        ];
+        sessionStorage.setItem('player', JSON.stringify(this.player));
+      });
   }
 
   revealCards() {
     this.gameService.revealCards(true);
     this.isGameOver = true;
+    this.cardService.toggleCard(false);
   }
   restartGame() {
     this.gameService.revealCards(false);
     this.isGameOver = false;
+
+    this.cardService.resetIndex(-1);
+    this.userService.changeHasSelected(false);
   }
 }

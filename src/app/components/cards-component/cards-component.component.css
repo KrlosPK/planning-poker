@@ -53,6 +53,10 @@
 .select--card--pressed {
   background: #e4a4ff;
 }
+.selected--card {
+  background: #e4a4ff;
+  translate: 0 -8px;
+}
 .select--card__score {
   font-weight: 600;
   user-select: none;
@@ -70,7 +74,7 @@
 
 @media (max-width: 767px) {
   .select--cards {
-    width: 100%;
     overflow: scroll;
+    width: 100%;
   }
 }

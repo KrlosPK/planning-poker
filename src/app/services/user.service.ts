@@ -35,6 +35,14 @@ export class UserService {
     this.user.username = newUsername;
     this.user$.next(this.user);
   }
+  changeScore(newScore: number) {
+    this.user.score = newScore;
+    this.user$.next(this.user);
+  }
+  changeHasSelected(newSelected: boolean) {
+    this.user.hasSelected = newSelected;
+    this.user$.next(this.user);
+  }
   getUserData$(): Observable<User> {
     return this.user$.asObservable();
   }

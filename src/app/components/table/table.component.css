@@ -39,6 +39,12 @@
   top: 50%;
   translate: -50% -50%;
 }
+.card__img--identifier {
+  left: 50%;
+  position: absolute;
+  top: -1.3rem;
+  translate: -50%;
+}
 .card p {
   bottom: -1.5rem;
   left: 50%;
