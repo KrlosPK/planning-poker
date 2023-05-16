@@ -48,7 +48,7 @@
       <div class="table inner--table">
         <button
           class="button button--purple"
-          *ngIf="!isGameOver"
+          *ngIf="hasSelected && !isGameOver"
           (click)="revealCards()"
         >
           Revelar cartas
