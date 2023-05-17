@@ -1,4 +1,4 @@
-<section class="select--cards" *ngIf="showCard">
+<section class="select--cards" *ngIf="showCard === 'true'">
   <h2 class="select--cards__title">
     Elige una carta <span class="select--cards__hand">👆</span>
   </h2>
@@ -11,5 +11,19 @@
     >
       <p class="select--card__score">{{ card.score }}</p>
     </button>
+  </article>
+</section>
+<section
+  class="select--cards select--cards--average"
+  *ngIf="showCard === 'false'"
+>
+  <article class="select--cards__container">
+    <div class="select--card" *ngFor="let card of cards">
+      <p class="select--card__score">{{ card.score }}</p>
+    </div>
+  </article>
+  <article class="select--cards__average-score">
+    <h3>Promedio:</h3>
+    <h2>{{ averageScore }}</h2>
   </article>
 </section>

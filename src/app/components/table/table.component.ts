@@ -68,13 +68,14 @@ export class TableComponent implements OnInit {
   revealCards() {
     this.gameService.revealCards(true);
 
-    this.cardService.toggleCard(false);
+    this.cardService.toggleShowCard('false');
 
     this.isGameOver = true;
   }
   restartGame() {
     this.gameService.revealCards(false);
 
+    this.cardService.toggleShowCard('true');
     this.cardService.resetIndex(-1);
 
     this.userService.changeHasSelected(false);
