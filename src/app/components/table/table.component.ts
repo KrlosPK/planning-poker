@@ -18,6 +18,7 @@ export class TableComponent implements OnInit {
 
   hasChosenCardPlayers: number = 0;
   isGameOver: boolean = false;
+  isLoading: boolean = false;
   isRevealCards: boolean = false;
   users: User[] = [
     { id: 2, score: 5, username: 'Karen', rol: Role.PLAYER, hasSelected: true},
@@ -75,7 +76,11 @@ export class TableComponent implements OnInit {
     filteredUsers.forEach((user) => this.cardService.increaseAverageScore(user.score));
     this.cardService.increaseAverageScore(Number(this.score))
 
-    this.isGameOver = true;
+    this.isLoading = true;
+    setTimeout(() => {
+      this.isLoading = false;
+      this.isGameOver = true;
+    }, 800)
   }
   restartGame() {
     this.gameService.revealCards(false);

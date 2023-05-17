@@ -46,9 +46,18 @@
   <div class="table outside--table">
     <div class="table medium--table">
       <div class="table inner--table">
+        <article class="table__flex" *ngIf="isLoading">
+          <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <p>Contando votos</p>
+        </article>
         <button
           class="button button--purple"
-          *ngIf="hasSelected && !isGameOver"
+          *ngIf="hasSelected && !isGameOver && !isLoading"
           (click)="revealCards()"
         >
           Revelar cartas
@@ -58,7 +67,7 @@
           *ngIf="isGameOver"
           (click)="restartGame()"
         >
-          Reiniciar juego
+          Nueva votación
         </button>
       </div>
     </div>
