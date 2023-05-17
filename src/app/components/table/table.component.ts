@@ -67,20 +67,20 @@ export class TableComponent implements OnInit {
   }
 
   revealCards() {
-    this.gameService.revealCards(true);
+    this.isLoading = true;
+    setTimeout(() => {
+      this.gameService.revealCards(true);
+      this.cardService.toggleShowCard('false');
 
-    this.cardService.toggleShowCard('false');
+      this.isLoading = false;
+      this.isGameOver = true;
+    }, 600)
+
     const filteredUsers = this.users.filter(
       (user) => user.rol !== Role.SPECTATOR
     );
     filteredUsers.forEach((user) => this.cardService.increaseAverageScore(user.score));
     this.cardService.increaseAverageScore(Number(this.score))
-
-    this.isLoading = true;
-    setTimeout(() => {
-      this.isLoading = false;
-      this.isGameOver = true;
-    }, 800)
   }
   restartGame() {
     this.gameService.revealCards(false);
