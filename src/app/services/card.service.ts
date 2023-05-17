@@ -5,7 +5,7 @@ export class Card {
   index?: number = 0;
   score: number | string = 0;
   averageScore?: number[] = [];
-  showCard?: boolean = true;
+  showCard?: string = 'true';
 }
 
 @Injectable({
@@ -20,17 +20,19 @@ export class CardService {
     this.card$ = new Subject<Card>();
   }
 
-  increaseScore(score: number) {
-    if (this.card.averageScore) {
-      this.card.averageScore = [...this.card.averageScore, score];
-    }
+  increaseAverageScore(newScore: number) {
+    this.card.averageScore = [...(this.card.averageScore as []), newScore];
+    this.card$.next(this.card);
+  }
+  resetAverageScore(newScore: number[]) {
+    this.card.averageScore = newScore;
     this.card$.next(this.card);
   }
   resetIndex(newIndex: number) {
     this.card.index = newIndex;
     this.card$.next(this.card);
   }
-  toggleCard(newShowCard: boolean) {
+  toggleShowCard(newShowCard: string) {
     this.card.showCard = newShowCard;
     this.card$.next(this.card);
   }

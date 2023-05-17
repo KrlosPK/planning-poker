@@ -3,7 +3,6 @@ import { Observable, Subject } from 'rxjs';
 
 export class Game {
   gameName: string = '';
-  averageScore: number = 0;
   gameUrl: string = '';
   isRevealCard: boolean = false;
 }
