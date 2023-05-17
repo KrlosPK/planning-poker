@@ -9,7 +9,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class CardsComponentComponent implements OnInit {
   hasSelected: boolean = false;
-  showCard: boolean = true;
+  showCard: string = 'true';
+  averageScore!: number[] | string;
   username: string = '';
   rol: string = '';
   selectedCardIndex: number = -1;
@@ -34,15 +35,28 @@ export class CardsComponentComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.cardService.getCardData$().subscribe(({ index, showCard }) => {
-      if (showCard) this.showCard = showCard;
-      if (index) this.selectedCardIndex = index;
-    });
+    this.cardService
+      .getCardData$()
+      .subscribe(({ index, showCard, averageScore }) => {
+        if (index) this.selectedCardIndex = index;
+        if (showCard) this.showCard = showCard;
+        if (averageScore?.length) {
+          const sum = averageScore.reduce((acc, score) => acc + score);
+          const average = (sum / averageScore.length).toFixed(2);
+          const formattedAverage = average.toString().replace('.', ',');
+
+          this.averageScore = formattedAverage;
+        }
+      });
+
+    this.userService.getUserData$().subscribe(({ rol }) => (this.rol = rol));
   }
 
   changeScore(event: any, index: number) {
     const { innerText } = event.target;
+
     this.selectedCardIndex = index;
+
     this.userService.changeScore(innerText);
     this.userService.changeHasSelected(true);
   }

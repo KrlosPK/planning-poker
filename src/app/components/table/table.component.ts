@@ -69,6 +69,11 @@ export class TableComponent implements OnInit {
     this.gameService.revealCards(true);
 
     this.cardService.toggleShowCard('false');
+    const filteredUsers = this.users.filter(
+      (user) => user.rol !== Role.SPECTATOR
+    );
+    filteredUsers.forEach((user) => this.cardService.increaseAverageScore(user.score));
+    this.cardService.increaseAverageScore(Number(this.score))
 
     this.isGameOver = true;
   }
@@ -76,6 +81,7 @@ export class TableComponent implements OnInit {
     this.gameService.revealCards(false);
 
     this.cardService.toggleShowCard('true');
+    this.cardService.resetAverageScore([]);
     this.cardService.resetIndex(-1);
 
     this.userService.changeHasSelected(false);

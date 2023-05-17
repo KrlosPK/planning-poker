@@ -24,6 +24,10 @@ export class CardService {
     this.card.averageScore = [...(this.card.averageScore as []), newScore];
     this.card$.next(this.card);
   }
+  resetAverageScore(newScore: number[]) {
+    this.card.averageScore = newScore;
+    this.card$.next(this.card);
+  }
   resetIndex(newIndex: number) {
     this.card.index = newIndex;
     this.card$.next(this.card);
