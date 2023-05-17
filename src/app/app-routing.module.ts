@@ -7,15 +7,15 @@ import { GamePageComponent } from './pages/game-page/game-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'loading-page', pathMatch: 'full' },
-  { path: 'loading-page', component:  LoadingPageComponent},
-  { path: 'create-game', component: CreateGamePageComponent},
+  { path: 'loading-page', component: LoadingPageComponent },
+  { path: 'create-game', component: CreateGamePageComponent },
   { path: 'game', component: GamePageComponent },
   { path: '404', component: NotFoundPageComponent },
-  { path: '**', component: NotFoundPageComponent }
+  { path: '**', component: NotFoundPageComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
