@@ -38,8 +38,6 @@ export class CardService {
   }
 
   getCardData$(): Observable<Card> {
-    // const totalScore = this.card.score.reduce((a, b) => a + b, 0);
-    // return totalScore / this.card.score.length;
     return this.card$.asObservable();
   }
 }

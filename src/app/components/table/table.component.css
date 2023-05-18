@@ -55,6 +55,7 @@
   text-overflow: ellipsis;
   translate: -50%;
   user-select: none;
+  white-space: nowrap;
 }
 .card--spectator {
   background: url("../../../assets/Logo.png") center no-repeat;
@@ -72,6 +73,7 @@
 }
 .card--spectator p {
   bottom: -1.7rem;
+  white-space: nowrap;
 }
 .table {
   align-items: center;

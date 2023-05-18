@@ -17,7 +17,7 @@
   class="select--cards select--cards--average"
   *ngIf="showCard === 'false'"
 >
-  <article class="select--cards__container">
+  <article class="select--cards__container average--animation">
     <div class="select--card" *ngFor="let card of cards">
       <p class="select--card__score">{{ card.score }}</p>
     </div>
@@ -25,5 +25,6 @@
   <article class="select--cards__average-score">
     <h3>Promedio:</h3>
     <h2>{{ averageScore }}</h2>
+    <canvas></canvas>
   </article>
 </section>

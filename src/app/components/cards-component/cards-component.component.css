@@ -92,7 +92,22 @@
   background-color: var(--hover-color);
   border-radius: 5px;
 }
+.average--animation {
+  animation: average 550ms;
+}
+canvas {
+  pointer-events: none;
+  position: absolute;
+}
 
+@keyframes average {
+  from {
+    translate: 0 200px;
+  }
+  to {
+    translate: 0 0;
+  }
+}
 @media (max-width: 767px) {
   .select--cards {
     align-items: start;
