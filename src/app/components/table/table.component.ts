@@ -74,7 +74,7 @@ export class TableComponent implements OnInit {
 
       this.isLoading = false;
       this.isGameOver = true;
-    }, 1000);
+    }, 650);
 
     const filteredUsers = this.users.filter(
       (user) => user.rol !== Role.SPECTATOR
