@@ -48,10 +48,13 @@ export class CardsComponentComponent implements OnInit {
         }
         if (averageScore?.length) {
           const sum = averageScore.reduce((acc, score) => acc + score);
-          const average = (sum / averageScore.length).toFixed(2);
-          const formattedAverage = average.toString().replace('.', ',');
-
-          this.averageScore = formattedAverage;
+          const average = sum / averageScore.length;
+          if (isNaN(average)) {
+            this.averageScore = 'Coffee time!';
+          } else {
+            const formattedAverage = average.toFixed(2).replace('.', ',');
+            this.averageScore = formattedAverage;
+          }
         }
       });
 

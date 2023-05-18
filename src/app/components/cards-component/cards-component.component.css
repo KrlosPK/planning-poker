@@ -93,7 +93,14 @@
   border-radius: 5px;
 }
 .average--animation {
-  animation: average 550ms;
+  animation: average 350ms;
+}
+.coffe--time {
+  display: flex;
+  flex-direction: column;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  text-align: center;
 }
 canvas {
   pointer-events: none;
@@ -102,7 +109,7 @@ canvas {
 
 @keyframes average {
   from {
-    translate: 0 200px;
+    translate: 0 150px;
   }
   to {
     translate: 0 0;

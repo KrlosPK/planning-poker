@@ -24,7 +24,10 @@
   </article>
   <article class="select--cards__average-score">
     <h3>Promedio:</h3>
-    <h2>{{ averageScore }}</h2>
+    <h2 [ngClass]="{ 'coffe--time': this.averageScore === 'Coffee time!' }">
+      {{ averageScore }}
+      <span *ngIf="this.averageScore === 'Coffee time!'">☕</span>
+    </h2>
     <canvas></canvas>
   </article>
 </section>
