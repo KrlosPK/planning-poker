@@ -78,7 +78,8 @@
 }
 .select--card__average:hover {
   background: transparent;
-  translate: 0 0;
+  outline: 1px solid #e4a4ff;
+  translate: 0 -3px;
 }
 .select--card:hover .select--card__score {
   color: #330072;

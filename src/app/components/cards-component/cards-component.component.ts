@@ -52,7 +52,7 @@ export class CardsComponentComponent implements OnInit {
         }
         if (averageScore?.length) {
           const countMap: Record<number, number> = averageScore.reduce(
-            (map: any, score) => {
+            (map: Record<number, number>, score) => {
               map[score] = (map[score] || 0) + 1;
               return map;
             },
