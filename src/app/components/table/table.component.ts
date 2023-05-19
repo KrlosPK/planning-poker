@@ -40,6 +40,8 @@ export class TableComponent implements OnInit {
     const savedPlayer = sessionStorage.getItem('player');
     if (savedPlayer) {
       this.player = JSON.parse(savedPlayer);
+      if (!this.hasSelected)
+        this.hasSelected = JSON.parse(savedPlayer)[0].hasSelected;
     }
 
     this.gameService
