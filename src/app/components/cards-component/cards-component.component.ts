@@ -65,9 +65,6 @@ export class CardsComponentComponent implements OnInit {
             vote: countMap[point] || 0,
           }));
         
-          console.log(countMap);
-          console.log(this.selectedCards);
-
           const sum = averageScore.reduce((acc, score) => acc + score);
           const average = sum / averageScore.length;
           if (isNaN(average)) {
