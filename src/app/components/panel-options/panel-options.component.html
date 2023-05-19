@@ -16,7 +16,7 @@
         [class.is-invalid]="invalidUsername.touched && invalidUsername.invalid"
         placeholder="Laura"
       />
-      <small *ngIf="invalidUsername.invalid" class="panel--options__error">{{
+      <small *ngIf="invalidUsername" class="panel--options__error">{{
         getUsernameErrorMessage()
       }}</small>
     </div>

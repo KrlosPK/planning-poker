@@ -9,12 +9,16 @@ import * as confetti from 'canvas-confetti';
   styleUrls: ['./cards-component.component.css'],
 })
 export class CardsComponentComponent implements OnInit {
+  // ? User Data
   hasSelected: boolean = false;
-  showCard: string = 'true';
-  averageScore!: number[] | string;
   username: string = '';
   rol: string = '';
+
+  // ? Card Data
+  showCard: string = 'true';
+  averageScore!: number[] | string;
   selectedCardIndex: number = -1;
+  selectedCards!: Card[];
   cards: Card[] = [
     { score: 0 },
     { score: 1 },
@@ -47,11 +51,28 @@ export class CardsComponentComponent implements OnInit {
           }, 0);
         }
         if (averageScore?.length) {
+          const countMap: Record<number, number> = averageScore.reduce(
+            (map: any, score) => {
+              map[score] = (map[score] || 0) + 1;
+              return map;
+            },
+            {}
+          );
+        
+          const uniquePoints = new Set(averageScore);
+          this.selectedCards = Array.from(uniquePoints).map((point) => ({
+            score: point,
+            vote: countMap[point] || 0,
+          }));
+        
           const sum = averageScore.reduce((acc, score) => acc + score);
-          const average = (sum / averageScore.length).toFixed(2);
-          const formattedAverage = average.toString().replace('.', ',');
-
-          this.averageScore = formattedAverage;
+          const average = sum / averageScore.length;
+          if (isNaN(average)) {
+            this.averageScore = 'Coffee time!';
+          } else {
+            const formattedAverage = average.toFixed(2).replace('.', ',');
+            this.averageScore = formattedAverage;
+          }
         }
       });
 
@@ -67,6 +88,10 @@ export class CardsComponentComponent implements OnInit {
     this.userService.changeHasSelected(true);
   }
 
+  isScoreNaN(score: any): boolean {
+    return isNaN(score);
+  }
+  
   startConfetti(): void {
     const myCanvas = document.querySelector('canvas');
     if (myCanvas instanceof HTMLElement) {

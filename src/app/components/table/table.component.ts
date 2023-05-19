@@ -40,6 +40,8 @@ export class TableComponent implements OnInit {
     const savedPlayer = sessionStorage.getItem('player');
     if (savedPlayer) {
       this.player = JSON.parse(savedPlayer);
+      if (!this.hasSelected)
+        this.hasSelected = JSON.parse(savedPlayer)[0].hasSelected;
     }
 
     this.gameService
@@ -74,7 +76,7 @@ export class TableComponent implements OnInit {
 
       this.isLoading = false;
       this.isGameOver = true;
-    }, 1000);
+    }, 650);
 
     const filteredUsers = this.users.filter(
       (user) => user.rol !== Role.SPECTATOR

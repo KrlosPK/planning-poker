@@ -17,14 +17,32 @@
   class="select--cards select--cards--average"
   *ngIf="showCard === 'false'"
 >
+  <!-- TODO: -->
   <article class="select--cards__container average--animation">
-    <div class="select--card" *ngFor="let card of cards">
-      <p class="select--card__score">{{ card.score }}</p>
+    <div
+      class="select--card select--card__average"
+      *ngFor="let card of selectedCards"
+    >
+      <p class="select--card__score" *ngIf="!isScoreNaN(card.score)">
+        {{ card.score }}
+      </p>
+      <p class="select--card__score" *ngIf="isScoreNaN(card.score)">☕</p>
+
+      <p class="select--card__vote" *ngIf="card.vote === 1">
+        {{ card.vote }} voto
+      </p>
+      <p class="select--card__vote" *ngIf="card.vote !== 1">
+        {{ card.vote }} votos
+      </p>
     </div>
   </article>
+  <!-- TODO: -->
   <article class="select--cards__average-score">
     <h3>Promedio:</h3>
-    <h2>{{ averageScore }}</h2>
+    <h2 [ngClass]="{ 'coffe--time': this.averageScore === 'Coffee time!' }">
+      {{ averageScore }}
+      <span *ngIf="this.averageScore === 'Coffee time!'">☕</span>
+    </h2>
     <canvas></canvas>
   </article>
 </section>

@@ -3,9 +3,10 @@ import { Observable, Subject } from 'rxjs';
 
 export class Card {
   index?: number = 0;
-  score: number | string = 0;
+  score: number | string | number[] = 0;
   averageScore?: number[] = [];
   showCard?: string = 'true';
+  vote?: number = 0;
 }
 
 @Injectable({

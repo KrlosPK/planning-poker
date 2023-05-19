@@ -13,7 +13,7 @@
         [class.is-invalid]="invalidGameName.touched && invalidGameName.invalid"
         placeholder="sprint 32"
       />
-      <small *ngIf="invalidGameName.invalid" class="create--game__error">{{
+      <small *ngIf="invalidGameName" class="create--game__error">{{
         getGameNameErrorMessage()
       }}</small>
     </div>
