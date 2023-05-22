@@ -20,6 +20,15 @@
 .loading--page__image {
   animation: loading 1150ms ease-in-out infinite alternate-reverse;
 }
+.loading--page__logo {
+  position: relative;
+}
+.logo__p {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  translate: -50% -50%;
+}
 .loading--page__flex {
   align-items: center;
   display: flex;
@@ -28,7 +37,7 @@
   justify-content: center;
 }
 .spin {
-  animation: spinwheel 1.5s linear infinite;
+  animation: spinwheel 3s linear infinite;
 }
 
 @keyframes loading {
