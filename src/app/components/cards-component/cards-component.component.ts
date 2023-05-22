@@ -58,13 +58,13 @@ export class CardsComponentComponent implements OnInit {
             },
             {}
           );
-        
+
           const uniquePoints = new Set(averageScore);
           this.selectedCards = Array.from(uniquePoints).map((point) => ({
             score: point,
             vote: countMap[point] || 0,
           }));
-        
+
           const sum = averageScore.reduce((acc, score) => acc + score);
           const average = sum / averageScore.length;
           if (isNaN(average)) {
@@ -91,13 +91,11 @@ export class CardsComponentComponent implements OnInit {
   isScoreNaN(score: any): boolean {
     return isNaN(score);
   }
-  
+
   startConfetti(): void {
     const myCanvas = document.querySelector('canvas');
     if (myCanvas instanceof HTMLElement) {
-      const defaults = {
-        disableForReducedMotion: true,
-      };
+      const defaults = {};
       const colors = ['#757AE9', '#28224B', '#EBF4FF'];
       const myConfetti = confetti.create(myCanvas, {});
 
