@@ -1,4 +1,7 @@
-<section class="select--cards" *ngIf="showCard === 'true'">
+<section
+  class="select--cards"
+  *ngIf="showCard === 'true' && rol !== 'spectator'"
+>
   <h2 class="select--cards__title">
     Elige una carta <span class="select--cards__hand">👆</span>
   </h2>

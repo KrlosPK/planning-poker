@@ -84,7 +84,9 @@ export class TableComponent implements OnInit {
     filteredUsers.forEach((user) =>
       this.cardService.increaseAverageScore(user.score)
     );
-    this.cardService.increaseAverageScore(Number(this.score));
+    if (this.rol !== 'spectator') {
+      this.cardService.increaseAverageScore(Number(this.score));
+    }
   }
   restartGame() {
     this.gameService.revealCards(false);
@@ -93,7 +95,9 @@ export class TableComponent implements OnInit {
     this.cardService.resetAverageScore([]);
     this.cardService.resetIndex(-1);
 
-    this.userService.changeHasSelected(false);
+    if (this.rol !== 'spectator') {
+      this.userService.changeHasSelected(false);
+    }
     this.userService.changeScore(0);
 
     this.isGameOver = false;
