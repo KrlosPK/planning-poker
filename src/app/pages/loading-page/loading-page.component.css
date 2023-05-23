@@ -24,9 +24,9 @@
   position: relative;
 }
 .logo__p {
-  left: 50%;
+  left: 48%;
   position: absolute;
-  top: 50%;
+  top: 48%;
   translate: -50% -50%;
 }
 .loading--page__flex {
