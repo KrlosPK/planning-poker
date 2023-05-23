@@ -13,8 +13,11 @@
 .cards {
   display: flex;
   gap: 2rem;
+  height: 100%;
   justify-content: center;
   margin-bottom: 3rem;
+  position: absolute;
+  width: 100%;
 }
 .card {
   border: 2px solid #bb65ff;
@@ -24,7 +27,7 @@
   display: flex;
   filter: drop-shadow(0px 5px 10px rgba(100, 41, 205, 0.6));
   height: 60px;
-  position: relative;
+  position: absolute;
   width: 35px;
 }
 .card:hover {
@@ -75,6 +78,50 @@
   bottom: -1.7rem;
   white-space: nowrap;
 }
+
+/* ? User Cards */
+.card--user-1 {
+  bottom: -30%;
+  left: 50%;
+  translate: -50%;
+}
+.card--user-2 {
+  bottom: -30%;
+  left: 25%;
+  translate: -50%;
+}
+.card--user-3 {
+  bottom: -30%;
+  left: 75%;
+  translate: -50%;
+}
+.card--user-4 {
+  left: -15%;
+  top: 50%;
+  translate: 0 -50%;
+}
+.card--user-5 {
+  right: -15%;
+  top: 50%;
+  translate: 0 -50%;
+}
+.card--user-6 {
+  left: 50%;
+  top: -35%;
+  translate: -50%;
+}
+.card--user-7 {
+  left: 25%;
+  top: -35%;
+  translate: -50%;
+}
+.card--user-8 {
+  left: 75%;
+  top: -35%;
+  translate: -50%;
+}
+/* ? End User Cards */
+
 .table {
   align-items: center;
   aspect-ratio: 1.8;
@@ -180,6 +227,26 @@
   .inner--table {
     width: 260px;
   }
+  /* ? User Cards */
+  .card--user-1 {
+    bottom: -45%;
+  }
+  .card--user-2 {
+    bottom: -45%;
+  }
+  .card--user-3 {
+    bottom: -45%;
+  }
+  .card--user-6 {
+    top: -45%;
+  }
+  .card--user-7 {
+    top: -45%;
+  }
+  .card--user-8 {
+    top: -45%;
+  }
+  /* ? End User Cards */
 }
 @media (max-height: 768px) {
   .table--container {
