@@ -250,6 +250,7 @@
 }
 @media (max-height: 768px) {
   .table--container {
-    top: 40%;
+    scale: 0.85;
+    top: 44%;
   }
 }
