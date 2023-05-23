@@ -16,10 +16,7 @@ export class PanelOptionsComponent implements OnInit {
   form!: FormGroup;
   username: string | null = '';
 
-  constructor(
-    private fb: FormBuilder,
-    private userService: UserService
-  ) {
+  constructor(private fb: FormBuilder, private userService: UserService) {
     this.createForm();
   }
 
@@ -44,6 +41,9 @@ export class PanelOptionsComponent implements OnInit {
 
     sessionStorage.setItem('gamemode', this.form.get('gamemode')?.value);
     this.userService.changeRol(this.form.get('gamemode')?.value);
+
+    if (this.form.get('gamemode')?.value === 'spectator')
+      this.userService.changeHasSelected(true);
   }
 
   get invalidUsername(): AbstractControl {
