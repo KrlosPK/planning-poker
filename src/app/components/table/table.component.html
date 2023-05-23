@@ -1,34 +1,33 @@
 <section class="table--container">
   <div class="cards">
-    <div *ngFor="let attribute of player">
-      <div
-        class="card"
-        [ngClass]="{
-          'card--spectator': attribute.rol === 'spectator',
-          'card--pressed': attribute.hasSelected && !isRevealCards
-        }"
+    <div
+      *ngFor="let attribute of player"
+      class="card card--user-1"
+      [ngClass]="{
+        'card--spectator': attribute.rol === 'spectator',
+        'card--pressed': attribute.hasSelected && !isRevealCards
+      }"
+    >
+      <span
+        *ngIf="
+          attribute.score && attribute.rol !== 'spectator' && isRevealCards
+        "
+        >{{ attribute.score }}</span
       >
-        <span
-          *ngIf="
-            attribute.score && attribute.rol !== 'spectator' && isRevealCards
-          "
-          >{{ attribute.score }}</span
-        >
-        <img
-          src="./assets/moderator.png"
-          alt="user identifier"
-          class="card__img--identifier"
-          width="16"
-          height="16"
-        />
-        <p>
-          {{ attribute.username }}
-        </p>
-      </div>
+      <img
+        src="./assets/moderator.png"
+        alt="user identifier"
+        class="card__img--identifier"
+        width="16"
+        height="16"
+      />
+      <p>
+        {{ attribute.username }}
+      </p>
     </div>
     <div *ngFor="let card of users">
       <div
-        class="card"
+        class="card card--user-{{ card.id }}"
         [ngClass]="{
           'card--spectator': card.rol === 'spectator',
           'card--pressed': card.hasSelected && !isRevealCards
