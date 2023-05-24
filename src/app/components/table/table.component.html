@@ -43,6 +43,7 @@
             class="card__img--identifier identifier--hover"
             width="24"
             height="24"
+            *ngIf="card.hasSelected && !isRevealCards"
           />
         </button>
         <p>
