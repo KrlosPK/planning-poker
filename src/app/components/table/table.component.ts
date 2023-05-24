@@ -102,4 +102,16 @@ export class TableComponent implements OnInit {
 
     this.isGameOver = false;
   }
+
+  changeRol(userId: number) {
+    const user = this.users.find((user) => user.id === userId);
+
+    if (user) {
+      if (user.rol === Role.PLAYER) {
+        user.rol = Role.SPECTATOR;
+      } else {
+        user.rol = Role.PLAYER;
+      }
+    }
+  }
 }

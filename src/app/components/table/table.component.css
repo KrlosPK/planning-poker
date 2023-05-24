@@ -23,7 +23,7 @@
   border: 2px solid #bb65ff;
   border-radius: 7px;
   box-shadow: inset 0px 0px 6px rgba(189, 189, 255, 0.6);
-  cursor: pointer;
+  cursor: default;
   display: flex;
   filter: drop-shadow(0px 5px 10px rgba(100, 41, 205, 0.6));
   height: 60px;
@@ -42,11 +42,28 @@
   top: 50%;
   translate: -50% -50%;
 }
+.identifier--button {
+  background-color: transparent;
+  border: none;
+}
 .card__img--identifier {
   left: 50%;
   position: absolute;
   top: -1.3rem;
   translate: -50%;
+}
+.identifier--hover {
+  cursor: pointer;
+  display: none;
+  top: 50%;
+  transition: scale 300ms ease-in-out;
+  translate: -50% -50%;
+}
+.identifier--hover:hover {
+  scale: 1.125;
+}
+.card:hover .identifier--hover {
+  display: block;
 }
 .card p {
   bottom: -1.5rem;
@@ -96,12 +113,12 @@
   translate: -50%;
 }
 .card--user-4 {
-  left: -15%;
+  left: -20%;
   top: 50%;
   translate: 0 -50%;
 }
 .card--user-5 {
-  right: -15%;
+  right: -20%;
   top: 50%;
   translate: 0 -50%;
 }

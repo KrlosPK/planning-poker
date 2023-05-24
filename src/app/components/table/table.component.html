@@ -36,6 +36,15 @@
         <span *ngIf="card.score && card.rol !== 'spectator' && isRevealCards">{{
           card.score
         }}</span>
+        <button class="identifier--button" (click)="changeRol(card.id)">
+          <img
+            src="./assets/cambiar-rol.png"
+            alt="user identifier"
+            class="card__img--identifier identifier--hover"
+            width="24"
+            height="24"
+          />
+        </button>
         <p>
           {{ card.username }}
         </p>
