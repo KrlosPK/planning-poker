@@ -26,8 +26,8 @@
           src="./assets/cambiar-rol.png"
           alt="user identifier"
           class="card__img--identifier identifier--hover"
-          width="24"
-          height="24"
+          width="32"
+          height="32"
           *ngIf="!isRevealCards"
         />
       </button>
@@ -51,9 +51,9 @@
             src="./assets/cambiar-rol.png"
             alt="user identifier"
             class="card__img--identifier identifier--hover"
-            width="24"
-            height="24"
-            *ngIf="card.hasSelected && !isRevealCards"
+            width="32"
+            height="32"
+            *ngIf="card.hasSelected && !isRevealCards! && !isLoading"
           />
         </button>
         <p>
