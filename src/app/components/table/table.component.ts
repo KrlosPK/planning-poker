@@ -102,4 +102,26 @@ export class TableComponent implements OnInit {
 
     this.isGameOver = false;
   }
+
+  toggleRol(userId: number) {
+    const user = this.users.find((user) => user.id === userId);
+
+    if (user) {
+      if (user.rol === Role.PLAYER) {
+        user.rol = Role.SPECTATOR;
+      } else {
+        user.rol = Role.PLAYER;
+      }
+    }
+  }
+
+  toggleAdminRol() {
+    if (this.rol === Role.OWNER) {
+      this.userService.changeRol(Role.SPECTATOR)
+      this.userService.changeHasSelected(true)
+    } else {
+      this.userService.changeRol(Role.OWNER)
+      this.userService.changeHasSelected(false)
+    }
+  }
 }
