@@ -51,28 +51,7 @@ export class CardsComponentComponent implements OnInit {
           }, 0);
         }
         if (averageScore?.length) {
-          const countMap: Record<number, number> = averageScore.reduce(
-            (map: Record<number, number>, score) => {
-              map[score] = (map[score] || 0) + 1;
-              return map;
-            },
-            {}
-          );
-
-          const uniquePoints = new Set(averageScore);
-          this.selectedCards = Array.from(uniquePoints).map((point) => ({
-            score: point,
-            vote: countMap[point] || 0,
-          }));
-
-          const sum = averageScore.reduce((acc, score) => acc + score);
-          const average = sum / averageScore.length;
-          if (isNaN(average)) {
-            this.averageScore = 'Coffee time!';
-          } else {
-            const formattedAverage = average.toFixed(2).replace('.', ',');
-            this.averageScore = formattedAverage;
-          }
+          this.calculateAverageScore(averageScore);
         }
       });
 
@@ -86,6 +65,32 @@ export class CardsComponentComponent implements OnInit {
 
     this.userService.changeScore(innerText);
     this.userService.changeHasSelected(true);
+  }
+
+  calculateAverageScore(averageScore: number[]): number {
+    const countMap: Record<number, number> = averageScore.reduce(
+      (map: Record<number, number>, score) => {
+        map[score] = (map[score] || 0) + 1;
+        return map;
+      },
+      {}
+    );
+
+    const uniquePoints = new Set(averageScore);
+    this.selectedCards = Array.from(uniquePoints).map((point) => ({
+      score: point,
+      vote: countMap[point] || 0,
+    }));
+
+    const sum = averageScore.reduce((acc, score) => acc + score);
+    const average = sum / averageScore.length;
+    if (isNaN(average)) {
+      this.averageScore = 'Coffee time!';
+    } else {
+      const formattedAverage = average.toFixed(2).replace('.', ',');
+      this.averageScore = formattedAverage;
+    }
+    return average;
   }
 
   isScoreNaN(score: any): boolean {
