@@ -87,10 +87,12 @@ export class CardsComponentComponent implements OnInit {
     );
 
     const uniquePoints = new Set(averageScore);
-    this.selectedCards = Array.from(uniquePoints).map((point) => ({
-      score: point,
-      vote: countMap[point] || 0,
-    }));
+    this.selectedCards = Array.from(uniquePoints)
+      .sort((a, b) => a - b)
+      .map((point) => ({
+        score: point,
+        vote: countMap[point] || 0,
+      }));
 
     const sum = averageScore.reduce((acc, score) => acc + score);
     const average = sum / averageScore.length;
