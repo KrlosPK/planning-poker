@@ -118,6 +118,8 @@ export class CardsComponentComponent implements OnInit {
     );
 
     this.cards = result;
+    this.userService.changeHasSelected(false);
+    this.selectedCardIndex = -1;
     return result;
   }
 
