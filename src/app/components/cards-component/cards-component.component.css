@@ -37,12 +37,21 @@
 .select--cards__title {
   font-size: var(--title-size);
   font-weight: 600;
+  position: relative;
   text-align: center;
   width: 100%;
 }
 .select--cards__hand {
   display: inline-block;
   rotate: 180deg;
+}
+.select--cards__options {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  left: 30%;
+  margin-left: 1rem;
+  position: absolute;
 }
 .select--cards__container {
   display: flex;
@@ -127,6 +136,78 @@ canvas {
   pointer-events: none;
   position: absolute;
 }
+
+/* ? Change Score Mode Modal */
+.change--score__modal {
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  height: 100%;
+  inset: 0;
+  overflow: auto;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
+.change--score__modal.closed {
+  display: none;
+  pointer-events: none;
+}
+
+.modal-content {
+  align-items: center;
+  background-color: #121212;
+  display: flex;
+  margin: auto;
+  min-height: 10rem;
+  padding: 3.5rem;
+  position: relative;
+  width: fit-content;
+}
+
+.close {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  transition: rotate 300ms ease-in-out;
+}
+
+.close:hover {
+  color: black;
+  rotate: 10deg;
+  text-decoration: none;
+}
+.content-select {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  left: 50%;
+  position: relative;
+  translate: -50%;
+  width: max-content;
+}
+.change--score__select {
+  background: #f0f0f0;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  color: #000000;
+  cursor: pointer;
+  font-family: "Quicksand", sans-serif;
+  font-size: 1em;
+  font-weight: bolder;
+  outline: 0;
+  padding: 7px 10px;
+  transition: all 0.25s ease;
+}
+.change--score__select option {
+  color: #000000;
+}
+.change--score__select:hover {
+  background: #b1e8cd;
+}
+/* ? End Change Score Mode Modal */
 
 @keyframes average {
   from {

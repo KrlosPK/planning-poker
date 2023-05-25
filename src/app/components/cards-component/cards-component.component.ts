@@ -34,6 +34,13 @@ export class CardsComponentComponent implements OnInit {
     { score: '☕' },
   ];
 
+  isChangeScoreMode: boolean = false;
+  isLoading: string = 'false';
+  scoreModes: string[] = [
+    'Fibonacci (0, 1, 3, 5, 8, 13, 21, 34, 55, 89, ?, ☕)',
+    'Modified Fibonacci (0, 1, 2, 3, 5, 8, 13, 20, 40, 100, ?, ☕)',
+  ];
+
   constructor(
     private userService: UserService,
     private cardService: CardService
@@ -42,7 +49,7 @@ export class CardsComponentComponent implements OnInit {
   ngOnInit(): void {
     this.cardService
       .getCardData$()
-      .subscribe(({ index, showCard, averageScore }) => {
+      .subscribe(({ index, showCard, averageScore, isLoading }) => {
         if (index) this.selectedCardIndex = index;
         if (showCard) this.showCard = showCard;
         if (showCard === 'false') {
@@ -52,6 +59,9 @@ export class CardsComponentComponent implements OnInit {
         }
         if (averageScore?.length) {
           this.calculateAverageScore(averageScore);
+        }
+        if (isLoading) {
+          this.isLoading = isLoading;
         }
       });
 
@@ -91,6 +101,26 @@ export class CardsComponentComponent implements OnInit {
       this.averageScore = formattedAverage;
     }
     return average;
+  }
+
+  toggleScoreModeModal() {
+    this.isChangeScoreMode = !this.isChangeScoreMode;
+  }
+
+  changeScoreMode({ target }: any) {
+    const { value } = target;
+    const regex = /(\d+|[\?\☕])/g;
+    const matches = value.match(regex);
+    const result = matches.map((match: string) =>
+      match === '?' || match === '☕'
+        ? { score: match }
+        : { score: parseInt(match) }
+    );
+
+    this.cards = result;
+    this.userService.changeHasSelected(false);
+    this.selectedCardIndex = -1;
+    return result;
   }
 
   isScoreNaN(score: any): boolean {

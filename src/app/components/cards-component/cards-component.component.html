@@ -4,6 +4,18 @@
 >
   <h2 class="select--cards__title">
     Elige una carta <span class="select--cards__hand">👆</span>
+    <button
+      class="select--cards__options"
+      (click)="toggleScoreModeModal()"
+      *ngIf="isLoading === 'false'"
+    >
+      <img
+        src="./assets/cambiar.png"
+        alt="flechas de cambio"
+        width="20"
+        height="20"
+      />
+    </button>
   </h2>
   <article class="select--cards__container">
     <button
@@ -46,4 +58,22 @@
     </h2>
     <canvas></canvas>
   </article>
+</section>
+<section
+  class="change--score__modal"
+  [ngClass]="{ closed: !isChangeScoreMode }"
+>
+  <div class="modal-content">
+    <button class="close" (click)="toggleScoreModeModal()">
+      <img src="./assets/Group.png" alt="equis para cerrar la ventana modal" />
+    </button>
+    <div class="content-select">
+      <h2>Cambia el modo de puntaje</h2>
+      <select class="change--score__select" (change)="changeScoreMode($event)">
+        <option *ngFor="let item of scoreModes" [value]="item">
+          {{ item }}
+        </option>
+      </select>
+    </div>
+  </div>
 </section>

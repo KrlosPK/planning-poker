@@ -23,9 +23,9 @@ export class TableComponent implements OnInit {
   users: User[] = [
     { id: 2, score: 5, username: 'Karen', rol: Role.PLAYER, hasSelected: true},
     { id: 3, score: 13, username: 'Stiven', rol: Role.PLAYER, hasSelected: true},
-    { id: 4, score: 21, username: 'Juan', rol: Role.PLAYER, hasSelected: true},
-    { id: 5, score: 21, username: 'Andres', rol: Role.PLAYER, hasSelected: true},
-    { id: 6, score: 3, username: 'Lau', rol: Role.SPECTATOR, hasSelected: true},
+    { id: 4, score: 8, username: 'Juan', rol: Role.PLAYER, hasSelected: true},
+    { id: 5, score: 3, username: 'Andres', rol: Role.PLAYER, hasSelected: true},
+    { id: 6, score: 5, username: 'Lau', rol: Role.SPECTATOR, hasSelected: true},
     { id: 7, score: 13, username: 'Luisa', rol: Role.PLAYER, hasSelected: true},
     { id: 8, score: 8, username: 'Kevin', rol: Role.PLAYER, hasSelected: true},
   ];
@@ -70,10 +70,12 @@ export class TableComponent implements OnInit {
 
   revealCards() {
     this.isLoading = true;
+    this.cardService.toggleIsLoading('true');
     setTimeout(() => {
       this.gameService.revealCards(true);
       this.cardService.toggleShowCard('false');
 
+      this.cardService.toggleIsLoading('false');
       this.isLoading = false;
       this.isGameOver = true;
     }, 650);
