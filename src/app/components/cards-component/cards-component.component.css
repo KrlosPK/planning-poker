@@ -49,13 +49,9 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
-  display: none;
+  left: 30%;
   margin-left: 1rem;
   position: absolute;
-  right: 34%;
-}
-.select--cards__title:hover .select--cards__options {
-  display: inline-block;
 }
 .select--cards__container {
   display: flex;

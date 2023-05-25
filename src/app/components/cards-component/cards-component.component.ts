@@ -35,6 +35,7 @@ export class CardsComponentComponent implements OnInit {
   ];
 
   isChangeScoreMode: boolean = false;
+  isLoading: string = 'false';
   scoreModes: string[] = [
     'Fibonacci (0, 1, 3, 5, 8, 13, 21, 34, 55, 89, ?, ☕)',
     'Modified Fibonacci (0, 1, 2, 3, 5, 8, 13, 20, 40, 100, ?, ☕)',
@@ -48,7 +49,7 @@ export class CardsComponentComponent implements OnInit {
   ngOnInit(): void {
     this.cardService
       .getCardData$()
-      .subscribe(({ index, showCard, averageScore }) => {
+      .subscribe(({ index, showCard, averageScore, isLoading }) => {
         if (index) this.selectedCardIndex = index;
         if (showCard) this.showCard = showCard;
         if (showCard === 'false') {
@@ -58,6 +59,9 @@ export class CardsComponentComponent implements OnInit {
         }
         if (averageScore?.length) {
           this.calculateAverageScore(averageScore);
+        }
+        if (isLoading) {
+          this.isLoading = isLoading;
         }
       });
 

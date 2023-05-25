@@ -70,10 +70,12 @@ export class TableComponent implements OnInit {
 
   revealCards() {
     this.isLoading = true;
+    this.cardService.toggleIsLoading('true');
     setTimeout(() => {
       this.gameService.revealCards(true);
       this.cardService.toggleShowCard('false');
 
+      this.cardService.toggleIsLoading('false');
       this.isLoading = false;
       this.isGameOver = true;
     }, 650);

@@ -4,7 +4,11 @@
 >
   <h2 class="select--cards__title">
     Elige una carta <span class="select--cards__hand">👆</span>
-    <button class="select--cards__options" (click)="toggleScoreModeModal()">
+    <button
+      class="select--cards__options"
+      (click)="toggleScoreModeModal()"
+      *ngIf="isLoading === 'false'"
+    >
       <img
         src="./assets/cambiar.png"
         alt="flechas de cambio"

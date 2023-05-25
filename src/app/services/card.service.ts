@@ -7,6 +7,7 @@ export class Card {
   averageScore?: number[] = [];
   showCard?: string = 'true';
   vote?: number = 0;
+  isLoading?: string = 'false';
 }
 
 @Injectable({
@@ -35,6 +36,10 @@ export class CardService {
   }
   toggleShowCard(newShowCard: string) {
     this.card.showCard = newShowCard;
+    this.card$.next(this.card);
+  }
+  toggleIsLoading(newIsLoading: string) {
+    this.card.isLoading = newIsLoading;
     this.card$.next(this.card);
   }
 
