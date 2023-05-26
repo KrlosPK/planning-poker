@@ -119,6 +119,7 @@ export class CardsComponentComponent implements OnInit {
         : { score: parseInt(match) }
     );
 
+    console.log(result);
     this.cards = result;
     this.userService.changeHasSelected(false);
     this.selectedCardIndex = -1;
