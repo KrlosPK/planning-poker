@@ -113,12 +113,14 @@ export class CardsComponentComponent implements OnInit {
     const { value } = target;
     const regex = /(\d+|[\?\☕])/g;
     const matches = value.match(regex);
+    console.log(matches);
     const result = matches.map((match: string) =>
       match === '?' || match === '☕'
         ? { score: match }
         : { score: parseInt(match) }
     );
 
+    console.log(matches);
     console.log(result);
     this.cards = result;
     this.userService.changeHasSelected(false);
