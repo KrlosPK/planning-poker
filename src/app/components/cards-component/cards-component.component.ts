@@ -112,7 +112,7 @@ export class CardsComponentComponent implements OnInit {
   changeScoreMode({ target }: any) {
     const { value } = target;
     console.log(value);
-    const regex = /(\d+|[\?\☕])/g;
+    const regex = /(\d+|[\☕\?])/g;
     const matches = value.match(regex);
     const result = matches.map((match: string) =>
       match === '?' || match === '☕'
